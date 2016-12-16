@@ -1,0 +1,27 @@
+<ion-menu #leftMenu [content]="content">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>{{appName}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <button ion-item icon-left
+                    *ngFor="let page of pages"
+                    (click)="openPage(page)">
+                <ion-icon name="{{page.icon}}" color="primary"></ion-icon>
+                {{page.title | translate}}
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+
+
+<!--<div>-->
+<!--<h1>Hello Angular2-Meteor!</h1>-->
+<!--<demo></demo>-->
+<!--</div>-->

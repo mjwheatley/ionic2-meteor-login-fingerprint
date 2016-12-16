@@ -1,0 +1,13 @@
+<h2 padding>{{greeting}}</h2>
+
+<ion-list>
+    <ion-list-header>
+        {{"demo.header" | translate}}
+    </ion-list-header>
+    <ion-item *ngFor="let item of data | async">
+        {{item.name}}
+        <ion-note item-right>
+            {{"demo.itemNote" | translate}} {{item.age}}
+        </ion-note>
+    </ion-item>
+</ion-list>

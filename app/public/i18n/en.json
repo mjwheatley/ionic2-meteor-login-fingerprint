@@ -1,0 +1,31 @@
+{
+  "language": "English",
+  "general": {
+    "ok": "OK",
+    "no": "NO",
+    "yes": "YES",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "accept": "Accept"
+  },
+  "home": {
+    "title": "Home",
+    "i18n": "Internationalization (i18n)",
+    "i18nDescription": "This application also features support for internationalization using the ng2-translate node module.",
+    "demoHeader": "Hello Ionic2, Angular2, and Meteor!"
+  },
+  "welcome-header": {
+    "welcome": "Welcome",
+    "description": "This boilerplate project is to help you get a Meteor application, styled using Ionic 2, up and running in record time.",
+    "followIonicTutorial": "Continue by follow along on the tutorial section of the Ionic docs!"
+  },
+  "language-select": {
+    "header": "Select Language",
+    "language": "Language"
+  },
+  "demo": {
+    "greeting": "Hello Demo Component!",
+    "header": "This is the available data:",
+    "itemNote": "Age:"
+  }
+}
