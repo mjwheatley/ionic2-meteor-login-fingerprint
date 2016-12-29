@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "inlineSources": true
   },
   "exclude": [
     "node_modules"

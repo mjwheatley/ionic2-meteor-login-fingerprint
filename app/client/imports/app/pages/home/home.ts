@@ -3,13 +3,8 @@ import {App, NavController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 import {Constants} from "../../../../../both/Constants";
-//noinspection TypeScriptCheckImport
+
 import template from './home.html';
-
-
-//import {WelcomeHeaderComponent} from '../../components/welcome-header/welcome-header';
-//import {LanguageSelectComponent} from "../../components/language-select/language-select";
-
 @Component({
     selector: 'page-home',
     template

@@ -1,5 +1,5 @@
 /// <reference types="zone.js" />
-/// <reference types="meteor-typings" />
+/// <reference types="@types/meteor" />
 /// <reference types="@types/underscore" />
 /// <reference types="@types/chai" />
 /// <reference types="@types/mocha" />
@@ -30,7 +30,7 @@ declare module "*.sass" {
 }
 
 declare module "meteor/hwillson:stub-collections" {
-  import { Mongo } from "meteor/mongo";
+  import { Mongo } from "meteor";
 
   interface IStubCollections {
     stub(collection: Mongo.Collection);

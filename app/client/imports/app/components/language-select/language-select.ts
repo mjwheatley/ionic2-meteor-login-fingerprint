@@ -1,16 +1,10 @@
-/**
- * Created by mjwheatley on 5/2/16.
- */
 import {Component, NgZone} from '@angular/core';
 import {AlertController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 import {Constants} from "../../../../../both/Constants";
 
-//noinspection TypeScriptCheckImport
 import template from './language-select.html';
-
-
 @Component({
     selector: 'language-select',
     template
@@ -27,9 +21,6 @@ export class LanguageSelectComponent extends MeteorComponent {
     }
 
     ngOnInit():void {
-        Tracker.autorun(() => this.zone.run(() => {
-
-        }));
         // Use MeteorComponent autorun to respond to reactive session variables.
         this.autorun(() => {
             // Wait for translations to be ready

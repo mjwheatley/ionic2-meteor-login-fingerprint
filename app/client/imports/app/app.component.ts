@@ -1,15 +1,12 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
+import {Component, NgZone, ViewChild} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
-import { Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-//noinspection TypeScriptCheckImport
-import template from './app.component.html';
+import {Platform} from 'ionic-angular';
+import {StatusBar, Splashscreen} from 'ionic-native';
 import {Constants} from "../../../both/Constants";
 import {HomePage} from "./pages/home/home";
 import {TranslateService} from "ng2-translate";
 
-declare var Meteor;
-
+import template from './app.component.html';
 @Component({
     selector: "ion-app",
     template
@@ -28,7 +25,42 @@ export class AppComponent extends MeteorComponent {
                 public zone:NgZone,
                 public translate:TranslateService) {
         super();
+    }
+
+    ngOnInit():void {
         this.initializeApp();
+        // set the nav menu title to the application name from settings.json
+        this.appName = Meteor.settings.public["appName"];
+
+        // set our app's pages
+        // title references a key in the language JSON to be translated by the translate pipe in the HTML
+        this.pages = [
+            {icon: "home", title: "home.title", component: HomePage, rootPage: true},
+        ];
+
+        this.autorun(() => this.zone.run(() => {
+            // Use this to update component variables based on reactive sources.
+            // (i.e. Monogo collections or Session variables)
+
+            // User will be null upon initialization
+            this.user = Meteor.user();
+            console.log("user: ", this.user);
+
+            // Meteor.user() is a reactive variable.
+            if (Meteor.user()) {
+                // Do something when user is present after initialization or after log in.
+            }
+        }));
+
+        this.autorun(() => this.zone.run(() => {
+            if (Session.get(Constants.SESSION.PLATFORM_READY)) {
+                this.platformReady();
+            }
+        }));
+
+        this.translate.onLangChange.subscribe(() => {
+            Session.set(Constants.SESSION.TRANSLATIONS_READY, true);
+        });
     }
 
     private initializeApp() {
@@ -54,42 +86,6 @@ export class AppComponent extends MeteorComponent {
 
             Session.set(Constants.SESSION.PLATFORM_READY, true);
         });
-
-        this.translate.onLangChange.subscribe(() => {
-            Session.set(Constants.SESSION.TRANSLATIONS_READY, true);
-        });
-    }
-
-    ngOnInit():void {
-
-        // set the nav menu title to the application name from settings.json
-        this.appName = Meteor.settings.public.appName;
-
-        // set our app's pages
-        // title references a key in the language JSON to be translated by the translate pipe in the HTML
-        this.pages = [
-            {icon: "home", title: "home.title", component: HomePage, rootPage: true},
-        ];
-
-        Tracker.autorun(() => this.zone.run(() => {
-            // Use this to update component variables based on reactive sources.
-            // (i.e. Monogo collections or Session variables)
-
-            // User will be null upon initialization
-            this.user = Meteor.user();
-            console.log("user: ", this.user);
-
-            // Meteor.user() is a reactive variable.
-            if (Meteor.user()) {
-                // Do something when user is present after initialization or after log in.
-            }
-        }));
-
-        Tracker.autorun(() => this.zone.run(() => {
-            if (Session.get(Constants.SESSION.PLATFORM_READY)) {
-                this.platformReady();
-            }
-        }));
     }
 
     private platformReady():void {

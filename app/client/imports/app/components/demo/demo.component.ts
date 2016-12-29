@@ -4,12 +4,10 @@ import { DemoDataService } from "./demo-data.service";
 import { Demo } from "../../../../../both/models/demo.model";
 import { MeteorComponent } from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
-//noinspection TypeScriptCheckImport
-import template from "./demo.component.html";
-//noinspection TypeScriptCheckImport
-import style from "./demo.component.scss";
 import {Constants} from "../../../../../both/Constants";
 
+import template from "./demo.component.html";
+import style from "./demo.component.scss";
 @Component({
     selector: "demo",
     template,
