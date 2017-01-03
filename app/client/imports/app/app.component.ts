@@ -1,4 +1,4 @@
-import {Component, NgZone, ViewChild} from '@angular/core';
+import {Component, OnInit, NgZone, ViewChild} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {Platform} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
@@ -11,15 +11,16 @@ import template from './app.component.html';
     selector: "ion-app",
     template
 })
-export class AppComponent extends MeteorComponent {
+export class AppComponent extends MeteorComponent implements OnInit {
+    @ViewChild('leftMenu') leftMenu:any;
+    @ViewChild('content') nav:any;
+
     // Set the root (or first) page
     public rootPage:any = HomePage;
-    public pages:Array<INavigationMenuPage>;
     public appName:string;
     public user:Meteor.User;
 
-    @ViewChild('leftMenu') leftMenu:any;
-    @ViewChild('content') nav:any;
+    public pages:Array<INavigationMenuPage>;
 
     constructor(public platform:Platform,
                 public zone:NgZone,
@@ -34,9 +35,12 @@ export class AppComponent extends MeteorComponent {
 
         // set our app's pages
         // title references a key in the language JSON to be translated by the translate pipe in the HTML
-        this.pages = [
-            {icon: "home", title: "home.title", component: HomePage, rootPage: true},
-        ];
+        this.pages = [{
+            icon: "home",
+            title: "page-home.title",
+            component: HomePage,
+            rootPage: true
+        }];
 
         this.autorun(() => this.zone.run(() => {
             // Use this to update component variables based on reactive sources.
@@ -144,13 +148,13 @@ export class AppComponent extends MeteorComponent {
         // close the menu when clicking a link from the menu
         // getComponent selector is the component id attribute
         this.leftMenu.close().then(() => {
-            if (location.setRoot) {
-                this.nav.setRoot(location.page);
-            } else {
-                if (location.page) {
-                    // navigate to the new page if it is not the current page
-                    let viewCtrl = this.nav.getActive();
-                    if (viewCtrl.componentType !== location.page) {
+            if (location.page) {
+                // navigate to the new page if it is not the current page
+                let viewCtrl = this.nav.getActive();
+                if (viewCtrl.component !== location.page) {
+                    if (location.setRoot) {
+                        this.nav.setRoot(location.page);
+                    } else {
                         this.nav.push(location.page);
                     }
                 }

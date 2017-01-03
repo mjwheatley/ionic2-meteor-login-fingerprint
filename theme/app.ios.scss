@@ -34,6 +34,6 @@ $ionic-theme: "Default";
 // App iOS Only Sass
 // --------------------------------------------------
 // CSS that should only apply to the iOS app
-ion-menu ion-title {
+ion-menu .toolbar-ios ion-title {
   padding: 0 12px;
 }

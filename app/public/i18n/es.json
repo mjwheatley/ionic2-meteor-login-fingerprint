@@ -8,7 +8,7 @@
     "continue": "Continuar",
     "accept": "Aceptar"
   },
-  "home": {
+  "page-home": {
     "title": "Casa",
     "i18n": "Internacionalización ( i18n )",
     "i18nDescription": "Esta aplicación también cuenta con el apoyo a la internacionalización mediante el módulo de nodo de NG2 - traducir.",

@@ -33,3 +33,12 @@ $ionic-theme: "Default";
 // App Material Design Only Sass
 // --------------------------------------------------
 // CSS that should only apply to the Material Design app
+[text-wrap] .label-md {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.list-header-md {
+  border-top: none;
+  border-bottom: 1px solid #dedede;
+}

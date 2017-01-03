@@ -8,7 +8,7 @@
     "continue": "Continue",
     "accept": "Accept"
   },
-  "home": {
+  "page-home": {
     "title": "Home",
     "i18n": "Internationalization (i18n)",
     "i18nDescription": "This application also features support for internationalization using the ng2-translate node module.",
