@@ -12,5 +12,5 @@ export PORT="3000"
 export ROOT_URL="http://localhost:3000"
 export MOBILE_DDP_URL=$ROOT_URL
 #export MAIL_URL=""
-export MONGO_URL="mongodb://localhost:27017/Meteor-Ionic2-Starter-Dev"
+export MONGO_URL="mongodb://localhost:27017/ionic2-meteor-boilerplate-dev"
 
