@@ -63,6 +63,9 @@ export class AppComponent extends MeteorComponent implements OnInit {
         this.autorun(() => this.zone.run(() => {
             if (Session.get(Constants.SESSION.PLATFORM_READY)) {
                 this.platformReady();
+
+                // Reset PLATFORM_READY flag so styles will be applied correctly with hotcode push
+                Session.set(Constants.SESSION.PLATFORM_READY, false);
             }
         }));
 
