@@ -9,10 +9,6 @@
 @import 'stylesheets/main';
 @import 'pages/home/home';
 
-ion-menu ion-content {
-  background-color: white;
-}
-
 // Remove top border of all lists
 ion-list.list > .item.item-block:first-child,
 ion-list.list > ion-item-sliding:first-child .item.item-block {
@@ -32,4 +28,9 @@ ion-label[floating] {
 
 .toolbar-title {
   overflow: visible;
+}
+
+.item > ion-icon:first-child,
+.item-inner > ion-icon:first-child {
+  min-width: 28px; // 24px; override ionic style
 }

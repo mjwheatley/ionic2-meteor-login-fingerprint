@@ -7,12 +7,30 @@
 
     <ion-content>
         <ion-list>
-            <button ion-item
-                    *ngFor="let page of pages"
-                    (click)="openPage(page)">
-                <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
-                {{page.title | translate}}
-            </button>
+            <div *ngIf="!user && noUserPages && noUserPages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let noUserPage of noUserPages"
+                        (click)="openPage(noUserPage)">
+                    <ion-icon name="{{noUserPage.icon}}" item-left color="primary"></ion-icon>
+                    {{noUserPage.title | translate}}
+                </button>
+            </div>
+            <div *ngIf="user && userPages && userPages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let userPage of userPages"
+                        (click)="openPage(userPage)">
+                    <ion-icon name="{{userPage.icon}}" item-left color="primary"></ion-icon>
+                    {{userPage.title | translate}}
+                </button>
+            </div>
+            <div *ngIf="pages && pages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let page of pages"
+                        (click)="openPage(page)">
+                    <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
+                    {{page.title | translate}}
+                </button>
+            </div>
         </ion-list>
     </ion-content>
 
