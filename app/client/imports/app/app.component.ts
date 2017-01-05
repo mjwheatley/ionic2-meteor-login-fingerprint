@@ -21,6 +21,8 @@ export class AppComponent extends MeteorComponent implements OnInit {
     public user:Meteor.User;
 
     public pages:Array<INavigationMenuPage>;
+    public userPages:Array<INavigationMenuPage>;
+    public noUserPages:Array<INavigationMenuPage>;
 
     constructor(public platform:Platform,
                 public zone:NgZone,
@@ -35,9 +37,11 @@ export class AppComponent extends MeteorComponent implements OnInit {
 
         // set our app's pages
         // title references a key in the language JSON to be translated by the translate pipe in the HTML
+        this.noUserPages = [];
+        this.userPages = [];
         this.pages = [{
             icon: "home",
-            title: "page-home.title",
+            title: 'page-home.title',
             component: HomePage,
             rootPage: true
         }];
@@ -83,8 +87,19 @@ export class AppComponent extends MeteorComponent implements OnInit {
             // good for dark backgrounds and light text:
             if (Meteor.isCordova) {
                 // Keyboard.setAccessoryBarVisible(false);
-                // StatusBar.setStyle(StatusBar.LIGHT_CONTENT)
-                StatusBar.styleDefault();
+
+                // Style status bar
+                // StatusBar.styleDefault();
+                StatusBar.styleLightContent();
+
+                // Set color of Android status bar background
+                // iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
+                // StatusBar.overlaysWebView(false);
+
+                //* Complimentary hex value for primary color in theme/app.variables.scss *//
+                StatusBar.backgroundColorByHexString("#672B8A");
+
+
                 Splashscreen.hide();
             }
 
@@ -167,5 +182,5 @@ interface INavigationMenuPage {
     icon?:string,
     title:string,
     component:any,
-    rootPage:boolean
+    rootPage?:boolean
 }
