@@ -71,9 +71,9 @@ npm start
 
 ##Multi Language Support
 This boilerplate comes with support for Internationalization using the ng2-translate node module.
-Add additional language files to `app/public/i18n/`
-This boilerplate includes a component (`app/client/imports/app/components/language-select/`) that you can edit to add support for additional languages.
-Add new languages to alert dialog inputs:
+* Add additional language files to `app/public/i18n/`.
+* This boilerplate includes a custom component, ***LanguageSelectComponent*** (`app/client/imports/app/components/language-select/`), that you can edit to add support for additional languages.
+    *  Add new languages to the alert dialog inputs:
 
 ```
 inputs: [
@@ -83,6 +83,6 @@ inputs: [
 ```
 
 #Creating new pages/components
-This boilerplate contains a template component that can be used to create a new page or component.
-Copy `app/client/imports/app/pages/newpage/` and rename the directory and files.
-Complete the TODOS listed in newpage.ts
+This boilerplate contains a ***template component*** that can be used to create a new page or component.
+* Copy `app/client/imports/app/pages/newpage/` and rename the directory and files.
+* Complete the TODOs listed in newpage.ts
