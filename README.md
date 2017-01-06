@@ -1,10 +1,17 @@
 
-#Current Repo Framework Versions
+#Framework Versions
 ###Meteor 1.4.2.3
 ###Ionic2 rc4
 ###Angular 2.2.1
 
+#Screenshots
+###Android
+![home page top](screenshots/android/home-page-top.png) ![home page bottom](screenshots/android/home-page-bottom.png) ![language select](screenshots/android/language-select.png) ![ion menu](screenshots/android/ion-menu.png)
+###iOS
+![home page top](screenshots/ios/home-page-top.png) ![home page bottom](screenshots/ios/home-page-bottom.png) ![language select](screenshots/ios/language-select.png) ![ion menu](screenshots/ios/ion-menu.png)
+
 #References
+This repository was created using the following resources. The base of this repo is a clone of [angular2-meteor-boilerplate](https://github.com/Urigo/angular2-meteor-base).
 ###[Urigo/Angular2-Meteor Boilerplate](https://github.com/Urigo/angular2-meteor-base)
 ###[driftyco/ionic2-starter-blank](https://github.com/driftyco/ionic2-starter-blank/tree/master/src/app)
 ###[driftyco/ionic2-app-base](https://github.com/driftyco/ionic2-app-base) 
