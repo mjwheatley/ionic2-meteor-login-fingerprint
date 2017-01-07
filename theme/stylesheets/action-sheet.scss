@@ -1,0 +1,27 @@
+.action-sheet-icon.ion-md-camera {
+  color: color($colors, primary);
+}
+
+.action-sheet-icon.ion-md-image {
+  color: color($colors, primary);
+}
+
+.action-sheet-icon.ion-md-cloud-download {
+  color: color($colors, primary);
+}
+
+.action-sheet-icon.ion-md-cloud-upload {
+  color: color($colors, primary);
+}
+
+.action-sheet-icon.ion-ios-cart-outline {
+  color: color($colors, primary);
+}
+
+.action-sheet-cancel ion-icon, .action-sheet-destructive ion-icon {
+  color: color($colors, danger);
+}
+
+.action-sheet-icon.ion-md-trash {
+  color: gray;
+}

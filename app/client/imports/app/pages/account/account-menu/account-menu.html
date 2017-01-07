@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{"page-account-menu.title" | translate}}</ion-title>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <ion-list no-lines class="list-user" *ngIf="user">
+            <ion-item detail-none text-wrap
+                      class="item-primary"
+                      *ngIf="user">
+                <ion-avatar item-left>
+                    <img src="{{user.profile.picture}}" *ngIf="user.profile.picture">
+                    <button ion-button icon-only round clear color="light"
+                            class="disable-hover no-user-image-icon"
+                            *ngIf="!user.profile.picture">
+                        <ion-icon name="contact" *ngIf="!user.profile.picture"></ion-icon>
+                    </button>
+                </ion-avatar>
+                <h2>{{user.profile.name.display}}</h2>
+                <p class="user-item-email">{{user.emails['0'].address}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+
+        <button ion-item text-wrap
+                *ngFor="let page of pages"
+                (click)="openPage(page)">
+            <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
+            {{page.title}}
+        </button>
+    </ion-list>
+</ion-content>

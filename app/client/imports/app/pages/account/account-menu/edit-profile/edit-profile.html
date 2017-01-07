@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{"page-edit-profile.title" | translate}}</ion-title>
+        <ion-buttons end>
+            <button ion-button
+                    *ngIf="editProfileForm.valid"
+                    [disabled]="!editProfileForm.valid"
+                    (click)="updateProfile()">
+                {{"general.save" | translate}}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <add-image [imageUri]="imageUri"
+                   *ngIf="imageUri">
+
+        </add-image>
+        <add-image [imageUri]="placeholderImageUri"
+                   *ngIf="!imageUri">
+        </add-image>
+        <ion-card-content>
+            <form [formGroup]="editProfileForm"
+                  (ngSubmit)="updateProfile()">
+                <ion-list>
+                    <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                              [class.error]="!formControl.givenName.valid && formControl.givenName.touched">
+                        <ion-label floating>{{"create-account-card.labels.firstName" | translate}}</ion-label>
+                        <ion-icon color="primary" name="person" item-left class="floating-label-icon"></ion-icon>
+                        <ion-input type="string" 
+                                   [(ngModel)]="user.profile.name.given"
+                                   [formControl]="formControl.givenName"></ion-input>
+                    </ion-item>
+
+                    <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                              [class.error]="!formControl.familyName.valid && formControl.familyName.touched">
+                        <ion-label floating>{{"create-account-card.labels.lastName" | translate}}</ion-label>
+                        <ion-icon color="primary" name="person" item-left class="floating-label-icon"></ion-icon>
+                        <ion-input type="string" 
+                                   [(ngModel)]="user.profile.name.family"
+                                   [formControl]="formControl.familyName"></ion-input>
+                    </ion-item>
+
+                    <div padding></div>
+                </ion-list>
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

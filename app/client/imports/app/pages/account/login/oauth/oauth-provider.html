@@ -1,0 +1,6 @@
+<button ion-item text-wrap detail-none color="{{oauthProvider.color}}"
+        class="social-sign-in"
+        (click)="loginWithProvider(oauthProvider.name)">
+    <ion-icon item-left name="logo-{{oauthProvider.icon}}"></ion-icon>
+    {{"oauth-provider.labels.signInWith" | translate}} {{oauthProvider.name}}
+</button>

@@ -1,0 +1,26 @@
+.item-primary {
+  background-color: color($colors, primary);
+  color: white;
+  p {
+    color: white;
+  }
+}
+
+.user-item-email {
+  color: white;
+  font-size: 1.15rem;
+}
+
+.item-primary .item-inner {
+  border-bottom: none;
+}
+
+.no-user-image-icon {
+  font-size: 26px;
+  width: 36px;
+}
+
+/*Single item list for user*/
+ion-list.list-user {
+  margin-bottom: 0;
+}

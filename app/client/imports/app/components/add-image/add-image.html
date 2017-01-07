@@ -1,0 +1,13 @@
+<div padding class="fab-item-image-container">
+    <img src="{{imageUri}}" class="card-image">
+
+    <ion-fab right top>
+        <button ion-fab
+                class="disable-hover fab-item-image"
+                (click)="presentAddImageActionSheet()">
+            <ion-icon name="image"></ion-icon>
+        </button>
+    </ion-fab>
+</div>
+<input #hiddenFileInput class="hidden-file-input" type="file"
+       (change)="fileInputChangeListener($event)">
