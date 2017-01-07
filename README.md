@@ -91,14 +91,14 @@ This repository extends [ionic2-meteor-boilerplate](https://github.com/mjwheatle
 
 ##Oauth Services
 Refer to the developer guides for the different Oauth providers to set up and configure your app to use Oauth services and obtain the required credentials.
-* ####Google
+* **Google**
     * https://developers.google.com/identity/protocols/OAuth2
-* ####Facebook
+* **Facebook**
     * https://developers.facebook.com/docs/facebook-login
 
 #####Development redirect urls
-`http://localhost:3000/_oauth/google`
-`http://localhost:3000/_oauth/facebook`
+* `http://localhost:3000/_oauth/google`
+* `http://localhost:3000/_oauth/facebook`
 
 Once you have configured redirect urls, retrieve your credentials and add them to corresponding fields in `config/development/settings.json`.
 
