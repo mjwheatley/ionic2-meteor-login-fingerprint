@@ -14,3 +14,9 @@ ion-thumbnail img {
   height: auto;
 }
 /*End*/
+
+@each $color in $colors {
+  [background-color="#{nth($color, 1)}"] {
+    background-color: #{nth($color, 2)};
+  }
+}
