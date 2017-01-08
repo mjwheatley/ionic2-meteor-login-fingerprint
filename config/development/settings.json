@@ -5,12 +5,12 @@
   "private": {
     "environment": "DEVELOPMENT",
     "google": {
-      "clientId": "",
-      "secret": ""
+      "clientId": "594351952278-2vlfbpfj30pr13luua4q4kscdgv3m58g.apps.googleusercontent.com",
+      "secret": "U7DxxiehN-NG1xM5kCsckVL5"
     },
     "facebook": {
-      "appId": "",
-      "secret": ""
+      "appId": "222846434833925",
+      "secret": "09b66a8118d77afbb9e0e7acfdba81b7"
     }
   },
   "sample": "config/development/settings.json"
