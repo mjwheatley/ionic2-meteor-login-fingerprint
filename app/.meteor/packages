@@ -31,3 +31,4 @@ shell-server@0.2.1
 session
 accounts-password
 modules
+fortawesome:fontawesome
