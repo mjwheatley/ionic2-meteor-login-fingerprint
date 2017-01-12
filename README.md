@@ -10,8 +10,6 @@ This repository extends [ionic2-meteor-boilerplate](https://github.com/mjwheatle
 ![sign in not registered](screenshots/android/validation/sign-in-not-registered.png) ![sign in incorrect password](screenshots/android/validation/sign-in-incorrect-password.png) ![email validation](screenshots/android/validation/email-validation.png) ![already registered toast](screenshots/android/validation/already-registered-toast.png) ![forgot password email validation](screenshots/android/validation/forgot-password-email-validation.png)
 ###Navigation Menu
 ![nav menu logged out](screenshots/android/logged-out-menu.png) ![nav menu logged in](screenshots/android/logged-in-menu.png) ![nav menu profile pic](screenshots/android/logged-in-profile-pic.png)
-###Home Page
-![home page](screenshots/android/home-page.png) ![home page bottom](screenshots/android/home-page-bottom.png) ![language select](screenshots/android/language-select.png)
 ###Account Management
 ![account menu page](screenshots/android/account-management/account-menu-page.png) ![edit profile page](screenshots/android/account-management/edit-profile-page.png)  ![edit profile action sheet](screenshots/android/account-management/edit-profile-action-sheet.png) ![edit profile with picture](screenshots/android/account-management/edit-profile-with-picture.png) ![account menu update profile pic](screenshots/android/account-management/account-menu-update-profile-pic.png) ![change password page](screenshots/android/account-management/change-password-page.png)
 
