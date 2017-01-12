@@ -26,11 +26,11 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
     ngOnInit():void {
         this.pages = [{
             icon: "create",
-            title: this.translate.instant("page-edit-profile.title"),
+            title: "page-edit-profile.title",
             component: EditProfilePage
         }, {
             icon: "swap",
-            title: this.translate.instant("page-change-password.title"),
+            title: "page-change-password.title",
             component: ChangePasswordPage
         }];
 

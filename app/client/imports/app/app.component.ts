@@ -1,6 +1,6 @@
 import {Component, NgZone, ViewChild, OnInit} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
-import {Platform} from 'ionic-angular';
+import {Platform, LoadingController, Loading} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
 import {Constants} from "../../../both/Constants";
 import {HomePage} from "./pages/home/home";
@@ -25,8 +25,11 @@ export class AppComponent extends MeteorComponent implements OnInit {
     public pages:Array<INavigationMenuPage>;
     public userPages:Array<INavigationMenuPage>;
     public noUserPages:Array<INavigationMenuPage>;
+    private isLoading:boolean = false;
+    private loading:Loading;
 
     constructor(public platform:Platform,
+                public loadingCtrl:LoadingController,
                 public zone:NgZone,
                 public translate:TranslateService) {
         super();
@@ -83,6 +86,30 @@ export class AppComponent extends MeteorComponent implements OnInit {
 
         this.translate.onLangChange.subscribe(() => {
             Session.set(Constants.SESSION.TRANSLATIONS_READY, true);
+        });
+
+        // Global loading dialog
+        this.autorun(() => {
+            // Use Session.set(Constants.SESSION.LOADING, true) to trigger loading dialog
+            if (Session.get(Constants.SESSION.LOADING)) {
+                if (this.nav) {
+                    // Delay to prevent showing if loaded quickly
+                    Meteor.setTimeout(() => {
+                        if (Session.get(Constants.SESSION.LOADING)) {
+                            this.loading = this.loadingCtrl.create({
+                                spinner: 'crescent'
+                                //content: 'Loggin in...'
+                            });
+                            this.loading.present();
+                            this.isLoading = true;
+                        }
+                    }, 500);
+                }
+            } else {
+                if (this.isLoading) {
+                    this.loading.dismiss();
+                }
+            }
         });
     }
 

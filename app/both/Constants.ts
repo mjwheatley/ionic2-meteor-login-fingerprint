@@ -3,6 +3,7 @@ export class Constants {
 
     public static SESSION:any = {
         LANGUAGE: "language",
+        LOADING: "isLoading",
         PLATFORM_READY: "platformReady",
         TRANSLATIONS_READY: "translationsReady",
         INCORRECT_PASSWORD: "incorrectPassword",

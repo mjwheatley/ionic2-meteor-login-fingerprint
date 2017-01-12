@@ -28,7 +28,8 @@
                 *ngFor="let page of pages"
                 (click)="openPage(page)">
             <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
-            {{page.title}}
+            {{page.title | translate}}
         </button>
+        <language-select></language-select>
     </ion-list>
 </ion-content>
