@@ -5,12 +5,18 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 
 ##Screenshots
 ###Login Page
+![sign in blank](screenshots/android/sign-in-blank.png) ![sign in with email](screenshots/android/sign-in-with-email.png) ![sign in fingerprint not enabled](screenshots/android/sign-in-fingerprint-not-enabled.png) ![sign in fingerprint auth](screenshots/android/sign-in-fingerprint-auth.png)
 ###Account Management
+![acct manage fingerprint disabled](screenshots/android/acct-manage-fingerprint-disabled.png) ![acct manage fingerprint disclaimer](screenshots/android/acct-manage-fingerprint-disclaimer.png) ![acct manage fingerprint auth](screenshots/android/acct-manage-fingerprint-auth.png) ![acct manage fingerprint enabled success](screenshots/android/acct-manage-fingerprint-enabled-success.png)
+
 ##What's New
 * ***Login Page***
     * Added fingerprint button next to login button
-* **Account Management Components**
-
+* **Account Management**
+    * Added toggle to enable fingerprint authentication
+* FingerprintHelper Utility
+    * `app/client/imports/app/utils.fingerprinthelper.ts`
+    * Utility file to consolidated function methods for the different platform fingerprint plugins
 * **METEOR_SETTINGS**
     * `config/development/settings.json`
         * Added `public.fingerprint.appId`
