@@ -54,7 +54,8 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                 if (isFingerprintEnabled) {
                     this.initFingerprintLoginToggle = true;
                 }
-                this.isFingerprintEnabled = (this.user.profile.deviceId);
+                var deviceId:string = this.user.profile.deviceId;
+                this.isFingerprintEnabled = (deviceId && deviceId === device.uuid);
             }
         });
     }
