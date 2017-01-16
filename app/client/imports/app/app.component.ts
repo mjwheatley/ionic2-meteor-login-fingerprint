@@ -1,4 +1,4 @@
-import {Component, NgZone, ViewChild, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone, ViewChild} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {Platform, LoadingController, Loading} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
