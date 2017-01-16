@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{pageTitle}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <div *ngFor="let oauthProvider of oauthProviders">
+                    <oauth-provider [oauthProvider]="oauthProvider"></oauth-provider>
+                </div>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+
+    <login-card [hidden]="forgotPassword || createAccount || resetPassword"></login-card>
+    <forgot-password-card [hidden]="!forgotPassword"></forgot-password-card>
+    <password-reset-card [hidden]="!resetPassword"></password-reset-card>
+    <create-account-card [hidden]="!createAccount"></create-account-card>
+
+</ion-content>

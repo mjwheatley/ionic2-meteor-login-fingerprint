@@ -1,0 +1,155 @@
+{
+  "language": "English",
+  "general": {
+    "ok": "OK",
+    "no": "NO",
+    "yes": "YES",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "accept": "Accept",
+    "submit": "Submit",
+    "save": "Save"
+  },
+  "menu": {
+    "logout": "Sign Out"
+  },
+  "page-home": {
+    "title": "Home",
+    "i18n": "Internationalization (i18n)",
+    "i18nDescription": "This application also features support for internationalization using the ng2-translate node module.",
+    "demoHeader": "Hello Ionic2, Angular2, and Meteor!"
+  },
+  "welcome-header": {
+    "welcome": "Welcome",
+    "description": "This boilerplate project is to help you get a Meteor application, styled using Ionic 2, up and running in record time.",
+    "followIonicTutorial": "Continue by follow along on the tutorial section of the Ionic docs!"
+  },
+  "language-select": {
+    "header": "Select Language",
+    "language": "Language"
+  },
+  "demo": {
+    "greeting": "Hello Demo Component!",
+    "header": "This is the available data:",
+    "itemNote": "Age:"
+  },
+  "page-about": {
+    "title": "About"
+  },
+  "page-login": {
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "resetPassword": "Reset Password",
+    "forgotPassword": "Forgot Password"
+  },
+  "login-card": {
+    "labels": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "socialSignIn": "This account uses social sign in.",
+      "signIn": "Sign In Error",
+      "invalidEmail": "Please enter a valid email address.",
+      "notRegistered": "This email address is not registered.",
+      "passwordRequired": "Please enter your password.",
+      "incorrectPassword": "Incorrect Password!"
+    }
+  },
+  "create-account-card": {
+    "labels": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "confirmEmail": "Confirm Email",
+      "confirmPassword": "Confirm Password"
+    },
+    "errors": {
+      "createAccount": "Create Account Error",
+      "alreadyRegistered": "This email address is already registered.",
+      "passwordsMatch": "Passwords do not match.",
+      "emailsMatch": "Email addresses do not match."
+    }
+  },
+  "forgot-password-card": {
+    "sendEmail": "Send Email",
+    "errors": {
+      "passwordReset": "Password Reset Error"
+    }
+  },
+  "password-reset-card": {
+    "labels": {
+      "passwordResetCode": "Password Reset Code"
+    },
+    "hints": {
+      "passwordResetCode": "Please copy and paste the password reset code from your email."
+    },
+    "errors": {
+      "password": "Please enter a new password.",
+      "confirmPassword": "Please confirm your new password.",
+      "passwordResetCode": "Password reset code invalid or expired."
+    }
+  },
+  "oauth-provider": {
+    "labels": {
+      "signInWith": "Sign in with"
+    }
+  },
+  "page-account-menu": {
+    "title": "Account Management",
+    "alerts": {
+      "fingerprintLogin": {
+        "title": "Fingerprint Login",
+        "subTitle": "Would you like to use fingerprint authentication?",
+        "message": "Any fingerprint enrolled on this device can be used for authentication."
+      }
+    }
+  },
+  "page-change-password": {
+    "title": "Change Password",
+    "success": "Successfully changed password.",
+    "labels": {
+      "currentPassword": "Current Password",
+      "newPassword": "New Password"
+    }
+  },
+  "page-edit-profile": {
+    "title": "Edit Profile",
+    "updateProfileSuccess": "Successfully updated profile.",
+    "errors": {
+      "updateProfile": "Error Updating Profile"
+    }
+  },
+  "add-image": {
+    "title": "Add Image (100Kb Max)",
+    "takePicture": "Take a picture",
+    "selectPhoto": "Select a photo",
+    "removeImage": "Remove Image"
+  },
+  "image-handler": {
+    "errors": {
+      "camera": "Camera Error",
+      "invalidScheme": "Invalid Data Scheme",
+      "resizeImage": "Image file size is > 100KB.<br>Please resize the image.",
+      "tooBig": "TOO BIG!",
+      "invalidFileType": "Invalid File Type",
+      "notAnImage": "The selected file was not an image."
+    }
+  },
+  "fingerprint-helper": {
+    "enableAuthentication": {
+      "success": "Fingerprint Authentication Enabled",
+      "failure": "Failed to enable fingerprint authentication."
+    },
+    "login": {
+      "failure": "Fingerprint Authentication Failed"
+    },
+    "errors": {
+      "disable": "Failed to disable fingerprint authentication.",
+      "authenticationError": "Fingerprint Authentication Error",
+      "notEnabled": "Fingerprint authentication for this user is not enabled on this device.",
+      "notAvailable": "Fingerprint Authentication Not Available",
+      "hardwareRequired": "Fingerprint Scanner Required",
+      "noFingerprints": "No fingerprints enrolled on device.  Please go to device settings and enroll a fingerprint to use this feature."
+    }
+  }
+}

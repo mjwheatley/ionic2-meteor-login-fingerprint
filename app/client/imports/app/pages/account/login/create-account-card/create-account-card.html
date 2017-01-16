@@ -1,0 +1,95 @@
+<ion-card>
+    <ion-card-content>
+        <form [formGroup]="createAccountForm">
+            <ion-list>
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="!formControl.givenName.valid && formControl.givenName.touched">
+                    <ion-label floating>{{"create-account-card.labels.firstName" | translate}}</ion-label>
+                    <ion-icon color="primary" name="person" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="string" [(ngModel)]="user.profile.name.given"
+                               [formControl]="formControl.givenName"></ion-input>
+                </ion-item>
+
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="!formControl.familyName.valid && formControl.familyName.touched">
+                    <ion-label floating>{{"create-account-card.labels.lastName" | translate}}</ion-label>
+                    <ion-icon color="primary" name="person" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="string" [(ngModel)]="user.profile.name.family"
+                               [formControl]="formControl.familyName"></ion-input>
+                </ion-item>
+
+                <!--email-->
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="!formControl.email.valid && formControl.email.touched">
+                    <ion-label floating>{{"login-card.labels.email" | translate}}</ion-label>
+                    <ion-icon color="primary" name="mail" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="email" [(ngModel)]="user.email" [formControl]="formControl.email"></ion-input>
+                </ion-item>
+                <div *ngIf="(formControl.email.hasError('required') || formControl.email.hasError('invalidEmail')) && formControl.email.touched"
+                     class="icon-error-box">{{"login-card.errors.invalidEmail" | translate}}
+                </div>
+                <div *ngIf="formControl.email.hasError('registered')"
+                     class="icon-error-box">
+                    {{"create-account-card.errors.alreadyRegistered" | translate}}
+                </div>
+
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="(!formControl.confirmEmail.valid ||
+                          createAccountForm.getError('mismatchedFields') === 'mismatchedEmails') && formControl.confirmEmail.touched">
+                    <ion-label floating>{{"create-account-card.labels.confirmEmail" | translate}}</ion-label>
+                    <ion-icon color="primary" name="checkmark-circle-outline" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="email" [formControl]="formControl.confirmEmail"></ion-input>
+                </ion-item>
+                <div *ngIf="(formControl.confirmEmail.hasError('required')
+                    || formControl.confirmEmail.hasError('invalidEmail')
+                    || createAccountForm.getError('mismatchedFields') === 'mismatchedEmails')
+                    && formControl.confirmEmail.touched"
+                     class="icon-error-box">
+                    {{"create-account-card.errors.emailsMatch" | translate}}
+                </div>
+                <!---->
+
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="!formControl.password.valid && formControl.password.touched">
+                    <ion-label floating>{{"login-card.labels.password" | translate}}</ion-label>
+                    <ion-icon color="primary" name="lock" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="password" [(ngModel)]="user.password"
+                               [formControl]="formControl.password"></ion-input>
+                </ion-item>
+                <div *ngIf="formControl.password.hasError('required') && formControl.password.touched"
+                     class="icon-error-box">
+                    {{"login-card.errors.passwordRequired" | translate}}
+                </div>
+
+                <ion-item text-wrap class="floating-label-icon-left input-has-icon"
+                          [class.error]="(!formControl.confirmPassword.valid ||
+                          createAccountForm.getError('mismatchedFields') === 'mismatchedPasswords') && formControl.confirmPassword.touched">
+                    <ion-label floating>{{"create-account-card.labels.confirmPassword" | translate}}</ion-label>
+                    <ion-icon color="primary" name="checkmark-circle-outline" item-left class="floating-label-icon"></ion-icon>
+                    <ion-input type="password" [formControl]="formControl.confirmPassword"></ion-input>
+                </ion-item>
+                <div *ngIf="(formControl.confirmPassword.hasError('required')
+                    || createAccountForm.getError('mismatchedFields') === 'mismatchedPasswords')
+                    && formControl.confirmPassword.touched"
+                     class="icon-error-box">
+                    {{"create-account-card.errors.passwordsMatch" | translate}}
+                </div>
+
+                <div padding></div>
+            </ion-list>
+
+            <button ion-button icon-right block 
+                    [disabled]="!createAccountForm.valid"
+                    (click)="createAccount(createAccountForm.value)">
+                {{"page-login.createAccount" | translate}}
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </form>
+
+        <button ion-button icon-right clear block 
+                (click)="showSignInCard()">
+            {{"page-login.signIn" | translate}}
+            <ion-icon name="log-in"></ion-icon>
+        </button>
+    </ion-card-content>
+</ion-card>

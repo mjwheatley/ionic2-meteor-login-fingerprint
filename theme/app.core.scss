@@ -1,0 +1,40 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+@import 'stylesheets/main';
+@import 'stylesheets/form-control';
+@import 'stylesheets/toastr';
+@import 'stylesheets/action-sheet';
+@import 'pages/home/home';
+@import 'pages/login/login';
+@import 'pages/account/account-menu';
+@import 'components/add-image/add-image';
+
+// Remove top border of all lists
+ion-list.list > .item.item-block:first-child,
+ion-list.list > ion-item-sliding:first-child .item.item-block {
+  border-top: none;
+}
+
+// Remove bottom border of last item in a list
+ion-list.list > .item.item-block:last-child {
+  border-bottom: none;
+}
+
+// Fix for ion-labels not appearing on iOS
+ion-label[stacked],
+ion-label[floating] {
+  flex-basis: auto;
+}
+
+.toolbar-title {
+  overflow: visible;
+}
+
+.item > ion-icon:first-child,
+.item-inner > ion-icon:first-child {
+  min-width: 28px; // 24px; override ionic style
+}

@@ -1,0 +1,21 @@
+add-image {
+
+  .fab-item-image-container {
+    position: relative;
+  }
+
+  img.card-image {
+    margin: 0 auto;
+    padding: 20px 0;
+    max-height: 250px;
+    width: auto;
+  }
+
+}
+
+.hidden-file-input {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0
+}

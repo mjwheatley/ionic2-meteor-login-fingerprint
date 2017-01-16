@@ -1,0 +1,155 @@
+{
+  "language": "Español",
+  "general": {
+    "ok": "DE ACUERDO",
+    "no": "NO",
+    "yes": "SI",
+    "cancel": "Cancel",
+    "continue": "Continuar",
+    "accept": "Aceptar",
+    "submit": "Enviar",
+    "save": "Salvar"
+  },
+  "menu": {
+    "logout": "Desconectar"
+  },
+  "page-home": {
+    "title": "Casa",
+    "i18n": "Internacionalización ( i18n )",
+    "i18nDescription": "Esta aplicación también cuenta con el apoyo a la internacionalización mediante el módulo de nodo de NG2 - traducir.",
+    "demoHeader": "¡Hola, Ionic2, Angular2 y Meteor!"
+  },
+  "welcome-header": {
+    "welcome": "Bienvenido",
+    "description": "Este proyecto de inicio es para ayudarle a obtener una aplicación Meteor , de estilo jónico usando 2 , en funcionamiento en un tiempo récord",
+    "followIonicTutorial": "Continuar por seguir a lo largo de la sección de tutoriales de los documentos iónicos !"
+  },
+  "language-select": {
+    "header": "Seleccione el idioma",
+    "language": "Idioma"
+  },
+  "demo": {
+    "greeting": "Hola Demo Componente!",
+    "header": "Estos son los datos disponibles:",
+    "itemNote": "Años:"
+  },
+  "page-about": {
+    "title": "Acerca de"
+  },
+  "page-login": {
+    "signIn": "Registrarse",
+    "createAccount": "Crear Una Cuenta",
+    "resetPassword": "Restablecer La Contraseña",
+    "forgotPassword": "Se Te Olvidó Tu Contraseña"
+  },
+  "login-card": {
+    "labels": {
+      "email": "Email",
+      "password": "Contraseña"
+    },
+    "errors": {
+      "socialSignIn": "Esta cuenta utiliza el inicio de sesión social.",
+      "signIn": "Error de Inicio de Sesión",
+      "invalidEmail": "Por favor, introduce una dirección de correo electrónico válida.",
+      "notRegistered": "Esta dirección de email no está registrada.",
+      "passwordRequired": "Por favor, introduzca su contraseña.",
+      "incorrectPassword": "¡Contraseña incorrecta!"
+    }
+  },
+  "create-account-card": {
+    "labels": {
+      "firstName": "Nombre de Pila",
+      "lastName": "Apellido",
+      "confirmEmail": "Confirmar Correo Electrónico",
+      "confirmPassword": "Confirmar Contraseña"
+    },
+    "errors": {
+      "createAccount": "Crear un Error de Cuenta",
+      "alreadyRegistered": "Esta dirección de correo electrónico ya está registrada.",
+      "passwordsMatch": "Las contraseñas no coinciden.",
+      "emailsMatch": "Las direcciones de correo no coinciden."
+    }
+  },
+  "forgot-password-card": {
+    "sendEmail": "Enviar Correo Electrónico",
+    "errors": {
+      "passwordReset": "Error de Restablecimiento de Contraseña"
+    }
+  },
+  "password-reset-card": {
+    "labels": {
+      "passwordResetCode": "Código de Restablecimiento de Contraseña"
+    },
+    "hints": {
+      "passwordResetCode": "Copia y pega el código de restablecimiento de contraseña de tu correo electrónico."
+    },
+    "errors": {
+      "password": "Introduzca una nueva contraseña.",
+      "confirmPassword": "Confirme su nueva contraseña.",
+      "passwordResetCode": "El código de restablecimiento de contraseña no es válido o ha caducado."
+    }
+  },
+  "oauth-provider": {
+    "labels": {
+      "signInWith": "Inicia sesión con"
+    }
+  },
+  "page-account-menu": {
+    "title": "Administración de Cuentas",
+    "alerts": {
+      "fingerprintLogin": {
+        "title": "Iniciar Sesión Con Huella Dactilar",
+        "subTitle": "¿Te gustaría utilizar autentificación de huella dactilar?",
+        "message": "Nota:  Cualquier huella dactilar inscrita en este dispositivo se puede utilizar para la autenticación."
+      }
+    }
+  },
+  "page-change-password": {
+    "title": "Cambia la Contraseña",
+    "success": "Contraseña cambiada correctamente.",
+    "labels": {
+      "currentPassword": "Contraseña Actual",
+      "newPassword": "Nueva Contraseña"
+    }
+  },
+  "page-edit-profile": {
+    "title": "Editar Perfil",
+    "updateProfileSuccess": "Perfil actualizado con éxito.",
+    "errors": {
+      "updateProfile": "Error al Actualizar el Perfil"
+    }
+  },
+  "add-image": {
+    "title": "Añadir Imagen (100Kb Max)",
+    "takePicture": "Toma una foto",
+    "selectPhoto": "Seleccione una foto",
+    "removeImage": "Eliminar imagen"
+  },
+  "image-handler": {
+    "errors": {
+      "camera": "Error de la Cámara",
+      "invalidScheme": "Esquema de Datos no Válido",
+      "resizeImage": "El tamaño del archivo de imagen es > 100KB.<br>Cambie el tamaño de la imagen.",
+      "tooBig": "¡DEMASIADO GRANDE!",
+      "invalidFileType": "Tipo de Archivo Inválido",
+      "notAnImage": "El archivo seleccionado no era una imagen."
+    }
+  },
+  "fingerprint-helper": {
+    "enableAuthentication": {
+      "success": "Autenticación de Huellas Digitales Habilitada",
+      "failure": "Error al habilitar la autenticación de huella digital."
+    },
+    "login": {
+      "failure": "Error en la Autenticación de Huellas Dactilares"
+    },
+    "errors": {
+      "disable": "Failed to disable fingerprint authentication.",
+      "authenticationError": "Error de Autenticación de Huellas Dactilares",
+      "notEnabled": "La autenticación de huellas dactilares para este usuario no está habilitada en este dispositivo.",
+      "notAvailable": "Autentificación de Huella Dactilar No Está Disponible",
+      "hardwareRequired": "Se Requiere un Escáner de Huellas Dactilares",
+      "noFingerprints": "No hay huellas dactilares registradas en el aparato. Favor de ir a los controles del aparato y registra una huella dactilar para utilizar esta herramienta."
+    }
+  }
+}

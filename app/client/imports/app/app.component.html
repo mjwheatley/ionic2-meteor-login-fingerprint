@@ -1,0 +1,65 @@
+<ion-menu #leftMenu [content]="content">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>{{appName}}</ion-title>
+        </ion-toolbar>
+        <ion-toolbar color="primary" *ngIf="user">
+            <ion-list no-lines class="list-user">
+                <button ion-item detail-none
+                        class="item-primary"
+                        *ngIf="user"
+                        (click)="showAccountMenu()">
+                    <ion-avatar item-left>
+                        <img src="{{user.profile.picture}}" *ngIf="user.profile.picture">
+                        <button ion-button icon-only round clear color="light"
+                                class="disable-hover no-user-image-icon"
+                                *ngIf="!user.profile.picture">
+                            <ion-icon name="contact" *ngIf="!user.profile.picture"></ion-icon>
+                        </button>
+                    </ion-avatar>
+                    <h2>{{user.profile.name.display}}</h2>
+                    <p class="user-item-email">{{user.emails['0'].address}}</p>
+                    <ion-icon name="md-more" item-right></ion-icon>
+                </button>
+            </ion-list>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list background-color="white">
+            <div *ngIf="!user && noUserPages && noUserPages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let noUserPage of noUserPages"
+                        (click)="openPage(noUserPage)">
+                    <ion-icon name="{{noUserPage.icon}}" item-left color="primary"></ion-icon>
+                    {{noUserPage.title | translate}}
+                </button>
+            </div>
+            <div *ngIf="user && userPages && userPages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let userPage of userPages"
+                        (click)="openPage(userPage)">
+                    <ion-icon name="{{userPage.icon}}" item-left color="primary"></ion-icon>
+                    {{userPage.title | translate}}
+                </button>
+            </div>
+            <div *ngIf="pages && pages.length > 0">
+                <button ion-item text-wrap
+                        *ngFor="let page of pages"
+                        (click)="openPage(page)">
+                    <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
+                    {{page.title | translate}}
+                </button>
+            </div>
+            <button ion-item detail-none
+                    *ngIf="user"
+                    (click)="logout()">
+                <ion-icon name="log-out" item-left color="danger"></ion-icon>
+                {{"menu.logout" | translate}}
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

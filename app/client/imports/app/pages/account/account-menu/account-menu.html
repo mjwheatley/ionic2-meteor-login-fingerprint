@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{"page-account-menu.title" | translate}}</ion-title>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <ion-list no-lines class="list-user" *ngIf="user">
+            <ion-item detail-none text-wrap
+                      class="item-primary"
+                      *ngIf="user">
+                <ion-avatar item-left>
+                    <img src="{{user.profile.picture}}" *ngIf="user.profile.picture">
+                    <button ion-button icon-only round clear color="light"
+                            class="disable-hover no-user-image-icon"
+                            *ngIf="!user.profile.picture">
+                        <ion-icon name="contact" *ngIf="!user.profile.picture"></ion-icon>
+                    </button>
+                </ion-avatar>
+                <h2>{{user.profile.name.display}}</h2>
+                <p class="user-item-email">{{user.emails['0'].address}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list background-color="white">
+        <button ion-item text-wrap
+                *ngFor="let page of pages"
+                (click)="openPage(page)">
+            <ion-icon name="{{page.icon}}" item-left color="primary"></ion-icon>
+            {{page.title | translate}}
+        </button>
+        <language-select></language-select>
+        <ion-item text-wrap
+                  *ngIf="isCordova">
+            <ion-icon name="finger-print" item-left color="primary"></ion-icon>
+            <ion-label>
+                {{"page-account-menu.alerts.fingerprintLogin.title" | translate}}
+            </ion-label>
+            <ion-toggle [(ngModel)]="isFingerprintEnabled"
+                        (ionChange)="toggleFingerprintEnabled()"></ion-toggle>
+        </ion-item>
+    </ion-list>
+</ion-content>

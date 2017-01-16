@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            {{"page-home.title" | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <welcome-header></welcome-header>
+
+    <ion-card>
+        <ion-card-header text-wrap>
+            {{"page-home.demoHeader" | translate}}
+        </ion-card-header>
+        <demo></demo>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            {{"page-home.i18n" | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            {{"page-home.i18nDescription" | translate}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>{{"language-select.header" | translate}}</ion-card-header>
+        <ion-list>
+            <language-select></language-select>
+        </ion-list>
+    </ion-card>
+
+</ion-content>

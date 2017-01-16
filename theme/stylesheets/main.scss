@@ -1,0 +1,22 @@
+@each $color in $colors {
+  [background-color="#{nth($color, 1)}"] {
+    background-color: #{nth($color, 2)};
+  }
+}
+
+/*Center image in thumbnail*/
+ion-thumbnail {
+  position: relative;
+}
+
+ion-thumbnail img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+}
+/*End*/

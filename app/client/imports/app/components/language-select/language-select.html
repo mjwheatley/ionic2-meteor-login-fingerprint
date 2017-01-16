@@ -1,0 +1,11 @@
+<ion-item text-wrap>
+    <ion-icon item-left color="primary">
+        <i class="fa fa-language" aria-hidden="true"></i>
+    </ion-icon>
+
+    {{"language-select.language" | translate}}
+    <button ion-button small outline item-right color="primary"
+            (click)="selectLanguage()">
+        {{language}}
+    </button>
+</ion-item>

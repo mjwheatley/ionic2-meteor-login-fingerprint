@@ -1,0 +1,17 @@
+{
+  "public": {
+    "appName": ""
+  },
+  "private": {
+    "environment": "PRODUCTION",
+    "google": {
+      "clientId": "",
+      "secret": ""
+    },
+    "facebook": {
+      "appId": "",
+      "secret": ""
+    }
+  },
+  "sample": "config/production/settings.json"
+}

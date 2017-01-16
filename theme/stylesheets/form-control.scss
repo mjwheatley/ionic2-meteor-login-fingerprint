@@ -1,0 +1,160 @@
+/*Remove top border of list when in an ion card content form, */
+ion-card ion-card-content form ion-list > .item:first-child {
+  border-top: none;
+}
+
+/*Add border to last input field in a form list, so the input line shows up for the last input in the list*/
+form ion-list > .item:last-child .item-inner,
+form ion-list > ion-item-sliding:last-child .item .item-inner {
+  border-bottom: 1px solid color($colors, primary);
+}
+
+/*Remove bottom border when input field becomes invalid*/
+ion-input.ng-invalid.ng-touched:after {
+  border-bottom: none;
+}
+
+/*Change floating label color*/
+.input-has-focus ion-label[floating],
+.input-has-value ion-label[floating] {
+  color: color($colors, primary);
+}
+
+/*Remove left padding from ion-item tags that are form inputs*/
+ion-card ion-card-content form ion-list ion-item.item {
+  padding-left: 0;
+}
+
+/*Floating labels*/
+.floating-label-icon-left .floating-label-icon {
+  padding-right: 18px;
+  position: absolute;
+  bottom: -5px;
+  left: 16px;
+}
+
+.floating-label-icon-left {
+  padding-left: 60px !important;
+}
+/*End*/
+
+ion-icon[item-left] + .item-inner {
+  margin-left: 0;
+}
+
+.icon-input-help-box {
+  margin-left: 60px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: color($colors, primary);
+  font-style: italic;
+}
+
+.icon-error-box {
+  margin-left: 60px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: color($colors, danger);
+  font-style: italic;
+}
+
+.error-box {
+  margin-top: 5px;
+  font-size: 14px;
+  color: color($colors, danger);
+  font-style: italic;
+}
+
+.error .item-inner {
+  border-bottom: 1px solid color($colors, danger) !important;
+}
+
+/*change default color of input line*/
+.card form ion-list ion-item.item-input.item-block .item-inner,
+form ion-list ion-item.item-datetime .item-inner,
+form ion-list ion-item-sliding .item-input .item-inner {
+  border-bottom: 1px solid color($colors, primary);
+  margin-left: 0;
+}
+
+/*Input error in focus*/
+form ion-list ion-item.item-input.input-has-focus.error {
+  border-bottom: 1px solid color($colors, danger);
+  box-shadow: none;
+}
+
+/*Increase thickness of input line when input has focus*/
+.card form ion-list.list .item-md.item-input.input-has-focus .item-inner,
+form ion-list ion-item.item-input.input-has-focus .item-inner {
+  border-bottom: 2px solid color($colors, primary);
+  box-shadow: none;
+}
+
+/*Not if there is an icon next to the input*/
+form ion-list ion-item.item-input.input-has-focus.input-has-icon {
+  border-bottom: none;
+}
+
+ion-list ion-item.item-input.input-has-icon.input-has-focus.error .item-inner {
+  border-bottom: 2px solid color($colors, danger) !important;
+  box-shadow: none;
+}
+
+
+/*End*/
+
+/*Change input icon color if error*/
+ion-item.item-input.input-has-icon.error *:before {
+  color: color($colors, danger);
+}
+
+/*Change floating label color if error*/
+.input-has-value.error ion-label[floating], .input-has-focus.error ion-label[floating] {
+  color: color($colors, danger);
+}
+
+.item-input.error ion-label {
+  color: color($colors, danger);
+}
+/*End*/
+
+/*Disabled Inputs*/
+
+/*change color of input line when disabled*/
+form ion-list ion-item.item-input-disabled .item-inner {
+  border-bottom: 1px solid gray;
+}
+
+/*Change input icon color if disabled*/
+ion-item.item-input.item-input-disabled *:before {
+  color: gray;
+}
+
+/*Change floating label color if disabled*/
+.item-input-disabled ion-label[floating] {
+  color: gray;
+}
+/*End*/
+
+/*Remove box shadow from input line*/
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+  box-shadow: none;
+}
+
+/*Make labels primary color and uppercase*/
+ion-item.item-input ion-label[floating],
+ion-item.item-datetime ion-label[floating]{
+  color: color($colors, primary);
+  text-transform: uppercase;
+}
+
+/*Make labels danger color if has error*/
+ion-item.item-input.error ion-label[floating] {
+  color: color($colors, danger);
+}
+
+/*override ng-valid input line color*/
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+  border-bottom-color: color($colors, primary);
+  box-shadow: none;
+}
