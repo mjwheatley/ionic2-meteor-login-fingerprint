@@ -38,5 +38,5 @@ export class Constants {
     };
 
     public static ADD_IMAGE_PLACEHOLDER_URI:string = "/images/add_image_camera_photo.png";
-    public static IMAGE_URI_PREFIX:string = "data:image/jpeg;base64,"
+    public static IMAGE_URI_PREFIX:string = "data:image/jpeg;base64,";
 }
