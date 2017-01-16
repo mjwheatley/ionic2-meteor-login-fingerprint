@@ -4,7 +4,7 @@ import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 
 // TODO change template path
-import template from './newpage.html'
+import template from './newpage.html';
 //TODO change selector
 @Component({
     selector: 'page-newpage',

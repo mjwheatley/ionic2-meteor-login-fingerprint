@@ -52,7 +52,7 @@ App.setPreference('BackupWebStorage', 'local');
 App.setPreference('StatusBarOverlaysWebView', 'true');
 //App.setPreference('StatusBarBackgroundColor', '#000000');
 
-App.accessRule('http://localhost:3000/*')
+App.accessRule('http://localhost:3000/*');
 App.accessRule('https://localhost:3000/*');
 App.accessRule('http://meteor.local');
 App.accessRule('http://localhost:12664/');

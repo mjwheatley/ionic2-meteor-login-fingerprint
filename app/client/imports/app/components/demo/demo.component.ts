@@ -33,7 +33,6 @@ export class DemoComponent extends MeteorComponent implements OnInit {
             // or the language is changed after the component has been rendered.
             if (Session.get(Constants.SESSION.TRANSLATIONS_READY)) {
                 this.translate.get('demo.greeting').subscribe((translation:string) => {
-                    console.log("translate subscription callback: ", translation);
                     this.greeting = translation;
                 });
             }
