@@ -46,6 +46,7 @@ App.info({
 //     'android_hdpi_landscape': 'resources/android/splash/splash-800x480.png',
 //     'android_xhdpi_portrait': 'resources/android/splash/splash-720x1280.png',
 //     'android_xhdpi_landscape': 'resources/android/splash/splash-1280x720.png'
+// });
 
 App.setPreference('BackupWebStorage', 'local');
 App.setPreference('StatusBarOverlaysWebView', 'true');
