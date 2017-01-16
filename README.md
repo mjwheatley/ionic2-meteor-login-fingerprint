@@ -5,11 +5,7 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 
 ##Screenshots
 ###Login Page
-![fingerprint sign in](screenshots/android/sign-in.png)
 ###Account Management
-![account menu page](screenshots/android/account-management/account-menu-page.png)
-
-
 ##What's New
 * ***Login Page***
     * Added fingerprint button next to login button
