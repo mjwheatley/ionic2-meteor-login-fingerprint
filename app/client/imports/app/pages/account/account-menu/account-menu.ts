@@ -26,6 +26,7 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
     private isInit:boolean = false;
     private initFingerprintLoginToggle:boolean = false;
     private fingerprintHelper:FingerprintHelper;
+    private secret:string;
 
     constructor(public nav:NavController,
                 public alertCtrl:AlertController,
@@ -123,10 +124,11 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
     private startFingerprintAuthFlow():void {
         var self = this;
 
-        var errorMsg = Constants.EMPTY_STRING;
         self.fingerprintHelper.isFingerprintAvailable((error, result) => {
+            var errorMsg = Constants.EMPTY_STRING;
             if (error) {
                 console.log("error: " + JSON.stringify(error));
+                self.isFingerprintEnabled = false;
                 errorMsg = error;
                 let alert = self.alertCtrl.create({
                     title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
@@ -136,7 +138,9 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                 alert.present();
             } else {
                 console.log("isFingerprintAvailable() result: " + JSON.stringify(result));
+
                 if (!result.isAvailable) {
+                    self.isFingerprintEnabled = false;
                     if (!result.isHardwareDetected) {
                         errorMsg = self.translate.instant("fingerprint-helper.errors.hardwareRequired");
                     } else if (!result.hasEnrolledFingerprints) {
@@ -148,9 +152,9 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                         buttons: [self.translate.instant("general.ok")]
                     });
                     alert.present();
-                } else {
-                    self.getFingerprintCredentialsToEncrypt();
                 }
+
+                self.getFingerprintCredentialsToEncrypt();
             }
         });
     }
@@ -158,9 +162,10 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
     private getFingerprintCredentialsToEncrypt():void {
         var self = this;
         if (Meteor.isCordova) {
-            var deviceInfo;
             Session.set(Constants.SESSION.LOADING, true);
-            Meteor.call("/auth/fingerprint/android/credentials/secret", {deviceId: device.uuid}, (error, result) => {
+            Meteor.call("/auth/fingerprint/android/credentials/secret", {
+                deviceId: device.uuid
+            }, (error, result) => {
                 Session.set(Constants.SESSION.LOADING, false);
                 if (error) {
                     console.log("error: " + JSON.stringify(error));
@@ -173,7 +178,8 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                     alert.present();
                 } else {
                     console.log("getFingerprintCredentialsToEncrypt() result: " + JSON.stringify(result));
-                    self.doFingerprintAuthentication(result.secret);
+                    self.secret = result.secret;
+                    self.doFingerprintAuthentication(self.secret);
                 }
             });
         }
@@ -182,7 +188,15 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
     private doFingerprintAuthentication(secret:string):void {
         var self = this;
         if (Meteor.isCordova) {
-            self.fingerprintHelper.authenticate({secret: secret}, (error, result) => {
+            var options:any = {
+                secret: secret
+            };
+            if (device.platform === Constants.DEVICE.IOS) {
+                options.message = self.translate.instant("fingerprint-helper.touchId.scanFingerprint");
+            }
+            self.fingerprintHelper.authenticate({
+                secret: secret
+            }, (error, result) => {
                 if (error) {
                     console.log("authentication error: " + JSON.stringify(error));
                     self.isFingerprintEnabled = false;
@@ -196,15 +210,19 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                     }
                 } else {
                     console.log("authentication result: " + JSON.stringify(result));
-                    if (result.withFingerprint && result.token) {
-                        self.saveEncryptedToken(result.token);
-                    } else {
-                        self.isFingerprintEnabled = false;
-                        new ToastMessenger().toast({
-                            type: "error",
-                            message: self.translate.instant("fingerprint-helper.enableAuthentication.failure")
-                        });
+                    if (device.platform === Constants.DEVICE.ANDROID) {
+                        if (!result.withFingerprint && !result.token) {
+                            self.isFingerprintEnabled = false;
+                            new ToastMessenger().toast({
+                                type: "error",
+                                message: self.translate.instant("fingerprint-helper.enableAuthentication.failure")
+                            });
+                            return;
+                        }
+                    } else if (device.platform === Constants.DEVICE.IOS) {
+                        result.token = self.secret;
                     }
+                    self.saveEncryptedToken(result.token);
                 }
             });
         }

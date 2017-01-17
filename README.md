@@ -3,7 +3,8 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 
 * Please refer to the base repository [README](https://github.com/mjwheatley/ionic2-meteor-boilerplate/blob/master/README.md) for additional documentation.
 
-##Screenshots
+#Screenshots
+##Android
 ###Login Page
 ![sign in blank](screenshots/android/sign-in-blank.png) ![sign in with email](screenshots/android/sign-in-with-email.png) ![sign in fingerprint not enabled](screenshots/android/sign-in-fingerprint-not-enabled.png) ![sign in fingerprint auth](screenshots/android/sign-in-fingerprint-auth.png)
 ###Account Management

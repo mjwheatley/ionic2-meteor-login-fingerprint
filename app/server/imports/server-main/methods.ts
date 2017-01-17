@@ -10,7 +10,9 @@ export class MeteorMethods {
 
     public init():void {
         Meteor.methods({
-            '/auth/fingerprint/android/credentials/secret': (data:{deviceId:string}) => {
+            '/auth/fingerprint/android/credentials/secret': (data:{
+                deviceId:string
+            }) => {
                 var self = this;
                 var user:Meteor.User = self.checkForUser();  // throws errors
                 if (user) {
@@ -66,7 +68,10 @@ export class MeteorMethods {
                     return {isVerified: verified, loginToken: loginToken};
                 }
             },
-            '/auth/fingerprint/android/credentials/token/save': (data:{deviceId:string, token:string}) => {
+            '/auth/fingerprint/android/credentials/token/save': (data:{
+                deviceId:string,
+                token:string
+            }) => {
                 var self = this;
                 var user:Meteor.User = self.checkForUser();  // throws errors
                 if (user) {
@@ -92,7 +97,10 @@ export class MeteorMethods {
                     }
                 }
             },
-            '/auth/fingerprint/android/credentials/token': (data:{email:string, deviceId:string}) => {
+            '/auth/fingerprint/android/credentials/token': (data:{
+                email:string,
+                deviceId:string
+            }) => {
                 var self = this;
                 var user:Meteor.User = Accounts.findUserByEmail(data.email);
                 if (!user) {

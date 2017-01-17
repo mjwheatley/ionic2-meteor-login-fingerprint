@@ -136,6 +136,9 @@
     }
   },
   "fingerprint-helper": {
+    "touchId": {
+      "scanFingerprint": "Por favor escanea tu huella digital"
+    },
     "enableAuthentication": {
       "success": "Autenticación de Huellas Digitales Habilitada",
       "failure": "Error al habilitar la autenticación de huella digital."

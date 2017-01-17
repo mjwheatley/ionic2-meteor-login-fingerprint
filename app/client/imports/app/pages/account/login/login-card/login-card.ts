@@ -161,14 +161,18 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                 });
             } else {
                 console.log("result: " + JSON.stringify(result));
-                if (result.withFingerprint && result.password) {
-                    self.verifyCredentials(result.password);
-                } else {
-                    new ToastMessenger().toast({
-                        type: "error",
-                        message: self.translate.instant("fingerprint-helper.login.failure")
-                    });
+                if (device.platform === Constants.DEVICE.ANDROID) {
+                    if (!result.withFingerprint && !result.password) {
+                        new ToastMessenger().toast({
+                            type: "error",
+                            message: self.translate.instant("fingerprint-helper.login.failure")
+                        });
+                        return;
+                    }
+                    secret = result.password;
                 }
+
+                self.verifyCredentials(secret);
             }
         });
     }

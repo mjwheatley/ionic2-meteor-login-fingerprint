@@ -136,6 +136,9 @@
     }
   },
   "fingerprint-helper": {
+    "touchId": {
+      "scanFingerprint": "Scan your fingerprint please"
+    },
     "enableAuthentication": {
       "success": "Fingerprint Authentication Enabled",
       "failure": "Failed to enable fingerprint authentication."

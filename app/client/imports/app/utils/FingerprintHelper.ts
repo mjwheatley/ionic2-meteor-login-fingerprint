@@ -3,11 +3,13 @@ import {Constants} from "../../../../both/Constants";
 
 declare var device;
 declare var FingerprintAuth;
+declare var window;
 
 export class FingerprintHelper {
     private callback:Function;
     private secret:string;
     private cipherMode:string = Constants.CIPHER_MODE.ENCRYPT;
+    private dialogMessage:string;
 
     constructor() {
 
@@ -19,30 +21,57 @@ export class FingerprintHelper {
     public isFingerprintAvailable(callback:Function):void {
         this.callback = callback;
         if (device.platform === Constants.DEVICE.ANDROID) {
-            FingerprintAuth.isAvailable(this.fpAuthIsAvailableSuccess.bind(this),
-                this.fpAuthIsAvailableError.bind(this));
+            FingerprintAuth.isAvailable(
+                this.fpAuthIsAvailableSuccess.bind(this),
+                this.fpAuthIsAvailableError.bind(this)
+            );
         } else if (device.platform == Constants.DEVICE.IOS) {
-
+            window.plugins.touchid.isAvailable(
+                this.touchIdIsAvailableSuccess.bind(this),
+                this.touchIdIsAvailableError.bind(this)
+            );
         }
     }
 
-    private fpAuthIsAvailableSuccess(result) {
+    private fpAuthIsAvailableSuccess(result):void {
         console.log("FingerprintAuth available: " + JSON.stringify(result));
         this.callback(null, result);
     }
 
-    private fpAuthIsAvailableError(message) {
+    private fpAuthIsAvailableError(message):void {
         console.log("fpAuthIsAvailableError(): " + message);
         this.callback(message);
     }
+
+    private touchIdIsAvailableSuccess(result):void {
+        console.log("TouchId available: " + JSON.stringify(result));
+        result = {isAvailable: true};
+        this.callback(null, result);
+    }
+
+    private touchIdIsAvailableError(error):void {
+        console.log("TouchId error: " + JSON.stringify(error));
+        this.callback(error.localizedDescription);
+    }
+
     // End
 
     /**
      * Authentication
      * */
-    public authenticate(options:{secret:string, mode?:string}, callback:Function):void {
+    public authenticate(options:{
+        secret:string,
+        mode?:string,
+        ios?: {
+            message?:string
+        }
+    }, callback:Function):void {
         this.callback = callback;
         this.secret = options.secret;
+        if (options.ios) {
+            this.dialogMessage = options.ios.message;
+        }
+
         if (options.mode) {
             this.cipherMode = options.mode;
         }
@@ -55,11 +84,14 @@ export class FingerprintHelper {
 
     private androidAuthentication():void {
         FingerprintAuth.isAvailable(this.androidAuthIsAvailableSuccess.bind(this),
-                                    this.androidAuthIsAvailableError.bind(this));
+            this.androidAuthIsAvailableError.bind(this));
     }
 
     private iosAuthentication():void {
-
+        window.plugins.touchid.isAvailable(
+            this.iosAuthIsAvailableSuccess.bind(this),
+            this.iosAuthIsAvailableError.bind(this)
+        );
     }
 
     private androidAuthIsAvailableSuccess(result):void {
@@ -82,7 +114,7 @@ export class FingerprintHelper {
                     this.fpAuthDecryptError.bind(this)
                 );
             }
-            
+
         } else {
             this.callback(null, result);
         }
@@ -93,7 +125,11 @@ export class FingerprintHelper {
     }
 
     private iosAuthIsAvailableSuccess(result):void {
-        this.callback(result);
+        window.plugins.touchid.verifyFingerprint(
+            this.dialogMessage,
+            this.touchIdVerifySuccess.bind(this),
+            this.touchIdVerifyError.bind(this)
+        );
     }
 
     private iosAuthIsAvailableError(message):void {
@@ -107,14 +143,22 @@ export class FingerprintHelper {
     private fpAuthEncryptError(message):void {
         this.callback(message);
     }
-    
+
     private fpAuthDecryptSuccess(result):void {
         this.callback(null, result);
     }
-    
+
     private fpAuthDecryptError(message):void {
         this.callback(message);
     }
 
+    private touchIdVerifySuccess(result):void {
+        result = {success: true};
+        this.callback(null, result);
+    }
+
+    private touchIdVerifyError(message):void {
+        this.callback(message);
+    }
     // End
 }
