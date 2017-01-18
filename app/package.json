@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all build:* --parallel watch:* meteor",
     "start:prod": "npm-run-all build:* --parallel watch:* meteor:prod",
-    "meteor": "meteor run --settings ../config/development/settings.json",
+    "meteor": "meteor run android-device --settings ../config/development/settings.json",
     "meteor:prod": "meteor run --production --settings ../config/development/settings.json",
     "clear": "meteor reset",
     "meteor:update": "meteor update --all-packages",

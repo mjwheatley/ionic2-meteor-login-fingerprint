@@ -1,0 +1,9 @@
+<ion-item text-wrap
+          *ngIf="isCordova">
+    <ion-icon name="finger-print" item-left color="primary"></ion-icon>
+    <ion-label>
+        {{"page-account-menu.alerts.fingerprintLogin.title" | translate}}
+    </ion-label>
+    <ion-toggle [(ngModel)]="isFingerprintEnabled"
+                (ionChange)="toggleFingerprintEnabled()"></ion-toggle>
+</ion-item>

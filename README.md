@@ -15,7 +15,9 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
     * Added fingerprint button next to login button
 * **Account Management**
     * Added toggle to enable fingerprint authentication
-* FingerprintHelper Utility
+        * **FingerprintLoginToggleComponent**
+            * `app/client/imports/app/components/fingerprint-login-toggle/`
+* **FingerprintHelper** Utility
     * `app/client/imports/app/utils.fingerprinthelper.ts`
     * Utility file to consolidated function methods for the different platform fingerprint plugins
 * **METEOR_SETTINGS**

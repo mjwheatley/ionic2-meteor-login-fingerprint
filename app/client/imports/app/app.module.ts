@@ -26,6 +26,7 @@ import {AccountMenuPage} from "./pages/account/account-menu/account-menu";
 import {ChangePasswordPage} from "./pages/account/account-menu/change-password/change-password";
 import {EditProfilePage} from "./pages/account/account-menu/edit-profile/edit-profile";
 import {AddImageComponent} from "./components/add-image/add-image";
+import {FingerprintLoginToggleComponent} from "./components/fingerprint-login-toggle/fingerprint-login-toggle";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {AddImageComponent} from "./components/add-image/add-image";
         AccountMenuPage,
         ChangePasswordPage,
         EditProfilePage,
-        AddImageComponent
+        AddImageComponent,
+        FingerprintLoginToggleComponent
     ],
     // Pages
     entryComponents: [
