@@ -95,14 +95,7 @@
     }
   },
   "page-account-menu": {
-    "title": "Administración de Cuentas",
-    "alerts": {
-      "fingerprintLogin": {
-        "title": "Iniciar Sesión Con Huella Dactilar",
-        "subTitle": "¿Te gustaría utilizar autentificación de huella dactilar?",
-        "message": "Nota:  Cualquier huella dactilar inscrita en este dispositivo se puede utilizar para la autenticación."
-      }
-    }
+    "title": "Administración de Cuentas"
   },
   "page-change-password": {
     "title": "Cambia la Contraseña",
@@ -133,6 +126,15 @@
       "tooBig": "¡DEMASIADO GRANDE!",
       "invalidFileType": "Tipo de Archivo Inválido",
       "notAnImage": "El archivo seleccionado no era una imagen."
+    }
+  },
+  "fingerprint-login-toggle":{
+    "title": "Iniciar Sesión Con Huella Dactilar",
+    "alerts": {
+      "fingerprintLogin": {
+        "subTitle": "¿Te gustaría utilizar autentificación de huella dactilar?",
+        "message": "Nota:  Cualquier huella dactilar inscrita en este dispositivo se puede utilizar para la autenticación."
+      }
     }
   },
   "fingerprint-helper": {

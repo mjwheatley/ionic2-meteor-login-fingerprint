@@ -74,9 +74,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
         var self = this;
 
         let alert = self.alertCtrl.create({
-            title: self.translate.instant("page-account-menu.alerts.fingerprintLogin.title"),
-            subTitle: self.translate.instant("page-account-menu.alerts.fingerprintLogin.subTitle"),
-            message: self.translate.instant("page-account-menu.alerts.fingerprintLogin.message"),
+            title: self.translate.instant("fingerprint-login-toggle.title"),
+            subTitle: self.translate.instant("fingerprint-login-toggle.alerts.fingerprintLogin.subTitle"),
+            message: self.translate.instant("fingerprint-login-toggle.alerts.fingerprintLogin.message"),
             buttons: [{
                 text: self.translate.instant("general.cancel"),
                 handler: data => {

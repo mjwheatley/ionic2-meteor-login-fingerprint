@@ -95,14 +95,7 @@
     }
   },
   "page-account-menu": {
-    "title": "Account Management",
-    "alerts": {
-      "fingerprintLogin": {
-        "title": "Fingerprint Login",
-        "subTitle": "Would you like to use fingerprint authentication?",
-        "message": "Any fingerprint enrolled on this device can be used for authentication."
-      }
-    }
+    "title": "Account Management"
   },
   "page-change-password": {
     "title": "Change Password",
@@ -133,6 +126,15 @@
       "tooBig": "TOO BIG!",
       "invalidFileType": "Invalid File Type",
       "notAnImage": "The selected file was not an image."
+    }
+  },
+  "fingerprint-login-toggle": {
+    "title": "Fingerprint Login",
+    "alerts": {
+      "fingerprintLogin": {
+        "subTitle": "Would you like to use fingerprint authentication?",
+        "message": "Any fingerprint enrolled on this device can be used for authentication."
+      }
     }
   },
   "fingerprint-helper": {
