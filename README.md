@@ -48,10 +48,11 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 ##Enabling Fingerprint Login
 ###Client Secret
 * The server generates a client secret by encrypting the userId and device UUID.
-* The client secret is returned to the application to be used as an input parameter for the fingerprint authentication plugins.
-* The server then creates a fingerprint service on the user's profile, hashes the client secret, and then stores the hashed client secret under the fingerprint service.
-###Android
-* Checks for the availabilty of fingerprint authentication.
+* The server creates a fingerprint service on the user's profile, hashes the client secret, and stores the hashed client secret under the fingerprint service.
+* The client secret is returned to the application to be used in the fingerprint authentication process.
+
+###Authentication flow
+* App checks for the availabilty of fingerprint authentication.
     * Checks if hardware is available
     * Checks if there are fingerprints enrolled on the device
 * Gets client secret from the server
@@ -60,8 +61,11 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
     * Server hashes the client secret and stores the hash like it would a password
     * Client secret is returned to the client
 * Fingerprint authentication
-    * Upon successful authentication the plugin returns an encrypted token
-* App sends the encrypted token and device UUID to the server to be saved under the user's profile.
+    * **Android**
+        * Upon successful authentication the plugin returns an encrypted token
+    * **iOS**
+        * Upon successful authentication the client secret is used as the token
+* App sends the token and device UUID to the server to be saved under the user's profile.
 
 ##Fingerprint Login
 * Enter email address
@@ -69,9 +73,13 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 
 ###Android
 * The app sends the device UUID to the server and attempts to retrieve the token previously encrypted by the plugin.
-    *  Server checks if the device UUID matches the one used when enabling fingerprint login.
-* The encrypted token is passed to the the fingerprint authentication plugin.
-    * Upon successful fingerprint authentication the plugin decrypts the token and returns the client secret.
+    *  Server checks if the device UUID matches the one used when enabling fingerprint login. If validated, the token is returned.
+* Fingerprint authentication
+    * **Android**
+        * The encrypted token is passed to the the fingerprint authentication plugin.
+        * Upon successful fingerprint authentication the plugin decrypts the token and returns the client secret.
+    * **iOS**
+        * Upon successful fingerprint authentication the app uses the retrieved token as the decrypted client secret.
 * The decrypted client secret is sent to the server for validation.
     * The server checks the client secret against the hashed client secret just like it would a password.
     * Upon validation, the server generates a time stamped login token and returns it to the application.
