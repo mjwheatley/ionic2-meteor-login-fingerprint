@@ -41,6 +41,7 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 * Tap the fingerprint icon button
 * Fingerprint authentication
 
+<a name="how_it_works"></a>
 #How It Works
 * The user must login and enable fingerprint authentication from the account management menu.
 * To enable fingerprint authentication, the user must successfully authenticate.
