@@ -70,8 +70,6 @@ This repository extends [ionic2-meteor-login](https://github.com/mjwheatley/ioni
 ##Fingerprint Login
 * Enter email address
 * Tap fingerprint icon button.
-
-###Android
 * The app sends the device UUID to the server and attempts to retrieve the token previously encrypted by the plugin.
     *  Server checks if the device UUID matches the one used when enabling fingerprint login. If validated, the token is returned.
 * Fingerprint authentication
