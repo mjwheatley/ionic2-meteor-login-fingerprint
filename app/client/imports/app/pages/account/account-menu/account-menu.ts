@@ -213,10 +213,12 @@ export class AccountMenuPage extends MeteorComponent implements OnInit {
                     if (device.platform === Constants.DEVICE.ANDROID) {
                         if (!result.withFingerprint && !result.token) {
                             self.isFingerprintEnabled = false;
-                            new ToastMessenger().toast({
-                                type: "error",
-                                message: self.translate.instant("fingerprint-helper.enableAuthentication.failure")
+                            let alert = self.alertCtrl.create({
+                                title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
+                                message: self.translate.instant("fingerprint-helper.enableAuthentication.failure"),
+                                buttons: [self.translate.instant("general.ok")]
                             });
+                            alert.present();
                             return;
                         }
                     } else if (device.platform === Constants.DEVICE.IOS) {

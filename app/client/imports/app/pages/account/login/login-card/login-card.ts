@@ -1,5 +1,5 @@
 import {Component, OnInit, NgZone} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, AlertController} from 'ionic-angular';
 import {FormBuilder, Validators, AbstractControl, FormGroup} from '@angular/forms';
 import {MeteorComponent} from 'angular2-meteor';
 import {HomePage} from '../../../home/home';
@@ -30,6 +30,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
     private fingerprintHelper:FingerprintHelper;
 
     constructor(public nav:NavController,
+                public alertCtrl:AlertController,
                 public fb:FormBuilder,
                 public zone:NgZone,
                 public translate:TranslateService) {
@@ -133,14 +134,23 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         }, (error, result) => {
             if (error) {
                 console.log("Error: " + JSON.stringify(error));
-                var errorMsg = self.translate.instant("fingerprint-helper.errors.authenticationError");
+                var errorMsg = error;
+                if (error.message) {
+                    errorMsg = error.message;
+                }
+                if (error.reason) {
+                    errorMsg = error.reason;
+                }
                 if (error.error === Constants.METEOR_ERRORS.FINGERPRINT_NOT_ENABLED) {
                     errorMsg = self.translate.instant("fingerprint-helper.errors.notEnabled")
                 }
-                new ToastMessenger().toast({
-                    type: "error",
-                    message: errorMsg
+
+                let alert = self.alertCtrl.create({
+                    title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
+                    message: errorMsg,
+                    buttons: [self.translate.instant("general.ok")]
                 });
+                alert.present();
             } else {
                 self.doFingerprintAuthentication(result.token);
             }
@@ -155,17 +165,19 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         }, (error, result) => {
             if (error) {
                 console.log("error: " + JSON.stringify(error));
-                new ToastMessenger().toast({
-                    type: "error",
-                    message: self.translate.instant("fingerprint-helper.errors.authenticationError")
+                let alert = self.alertCtrl.create({
+                    title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
+                    message: error,
+                    buttons: [self.translate.instant("general.ok")]
                 });
             } else {
                 console.log("result: " + JSON.stringify(result));
                 if (device.platform === Constants.DEVICE.ANDROID) {
                     if (!result.withFingerprint && !result.password) {
-                        new ToastMessenger().toast({
-                            type: "error",
-                            message: self.translate.instant("fingerprint-helper.login.failure")
+                        let alert = self.alertCtrl.create({
+                            title: self.translate.instant("fingerprint-helper.login.authenticationError"),
+                            message: self.translate.instant("fingerprint-helper.login.failure"),
+                            buttons: [self.translate.instant("general.ok")]
                         });
                         return;
                     }
@@ -185,9 +197,18 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         }, (error, result) => {
             if (error) {
                 console.log("Error verifying credentials: " + JSON.stringify(error));
-                new ToastMessenger().toast({
-                    type: "error",
-                    message: self.translate.instant("fingerprint-helper.errors.authenticationError")
+                var errorMsg = error;
+                if (error.message) {
+                    errorMsg = error.message;
+                }
+                if (error.reason) {
+                    errorMsg = error.reason;
+                }
+
+                let alert = self.alertCtrl.create({
+                    title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
+                    message: errorMsg,
+                    buttons: [self.translate.instant("general.ok")]
                 });
             } else {
                 console.log("Verify credentials result: " + JSON.stringify(result));

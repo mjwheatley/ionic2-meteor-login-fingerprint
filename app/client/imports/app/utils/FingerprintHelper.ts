@@ -132,8 +132,8 @@ export class FingerprintHelper {
         );
     }
 
-    private iosAuthIsAvailableError(message):void {
-        this.callback(message);
+    private iosAuthIsAvailableError(error):void {
+        this.callback(error.localizedDescription);
     }
 
     private fpAuthEncryptSuccess(result):void {
@@ -157,8 +157,8 @@ export class FingerprintHelper {
         this.callback(null, result);
     }
 
-    private touchIdVerifyError(message):void {
-        this.callback(message);
+    private touchIdVerifyError(error):void {
+        this.callback(error.localizedDescription);
     }
     // End
 }

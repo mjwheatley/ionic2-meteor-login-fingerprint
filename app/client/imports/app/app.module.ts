@@ -75,8 +75,8 @@ import {AddImageComponent} from "./components/add-image/add-image";
             //// http://ionicframework.com/docs/v2/api/config/Config/
             //mode: Constants.STYLE.MD,
             //pageTransition: Constants.STYLE.IOS,
-            //swipeBackEnabled: false,
-            //tabbarPlacement: 'top'
+            //tabbarPlacement: 'top',
+            swipeBackEnabled: false
         }),
     ],
     // Main Component
