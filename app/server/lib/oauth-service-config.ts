@@ -6,29 +6,23 @@ export class OauthServiceConfig {
     private createServiceConfiguration(provider) {
         ServiceConfiguration.configurations.remove({service: provider});
 
+        var providers = Meteor.settings["private"]["oauth2"]["providers"];
         var oauthServiceConfig = {
             google: {
                 service: provider,
-                clientId: Meteor.settings["private"][provider]["clientId"],
-                secret: Meteor.settings["private"][provider]["secret"],
+                clientId: providers[provider]["clientId"],
+                secret: providers[provider]["secret"],
                 loginStyle: "popup"
             },
             facebook: {
                 service: provider,
-                appId: Meteor.settings["private"][provider]["appId"],
-                secret: Meteor.settings["private"][provider]["secret"],
+                appId: providers[provider]["appId"],
+                secret: providers[provider]["secret"],
                 loginStyle: "popup"
             }
         };
 
-        switch (provider) {
-            case 'google':
-                ServiceConfiguration.configurations.insert(oauthServiceConfig.google);
-                break;
-            case 'facebook':
-                ServiceConfiguration.configurations.insert(oauthServiceConfig.facebook);
-                break;
-        }
+        ServiceConfiguration.configurations.insert(oauthServiceConfig[provider]);
     }
 
     public initOauthServices() {
