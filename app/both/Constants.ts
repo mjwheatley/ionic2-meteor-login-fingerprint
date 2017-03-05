@@ -6,6 +6,8 @@ export class Constants {
         LOADING: "isLoading",
         PLATFORM_READY: "platformReady",
         TRANSLATIONS_READY: "translationsReady",
+        PATH: "path",
+        URL_PARAMS: "urlParams"
         INCORRECT_PASSWORD: "incorrectPassword",
         FORGOT_PASSWORD: "forgotPassword",
         CREATE_ACCOUNT: "createAccount",

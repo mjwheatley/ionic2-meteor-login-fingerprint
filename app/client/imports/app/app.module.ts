@@ -29,7 +29,7 @@ import {AddImageComponent} from "./components/add-image/add-image";
 
 
 @NgModule({
-    // Components(Pages), Pipes, Directive
+    // Components/Pages, Pipes, Directive
     declarations: [
         AppComponent,
         HomePage,

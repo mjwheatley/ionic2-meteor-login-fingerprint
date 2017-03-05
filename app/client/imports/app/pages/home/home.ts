@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import {App, NavController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
@@ -14,11 +14,12 @@ export class HomePage extends MeteorComponent implements OnInit {
 
     constructor(public app:App,
                 public nav:NavController,
+                public zone:NgZone,
                 public translate:TranslateService) {
         super();
     }
 
-    ngOnInit():void {
+    ngOnInit() {
         // Use MeteorComponent autorun to respond to reactive session variables.
         this.autorun(() => {
             this.user = Meteor.user();
