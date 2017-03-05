@@ -6,7 +6,7 @@
   }
 }
 
-.user-item-email {
+.item.item-block p.user-item-email {
   color: white;
   font-size: 1.15rem;
 }
@@ -16,11 +16,22 @@
 }
 
 .no-user-image-icon {
-  font-size: 26px;
-  width: 40px;
+  font-size: 24px;
+  width: 36px;
 }
 
 /*Single item list for user*/
 ion-list.list-user {
   margin-bottom: 0;
+}
+
+.thumbnail-icon {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+}
+
+.thumbnail-icon .icon {
+  line-height: 80px;
+  font-size: 8rem;
 }

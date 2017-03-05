@@ -95,7 +95,7 @@ export class CreateAccountCardComponent extends MeteorComponent implements OnIni
         };
 
         this.autorun(() => {
-            this.user.email = Session.get(Constants.SESSION.EMAIL);
+            this.user.email = Session.get(Constants.SESSION.EMAIL) || null;
             Session.get(Constants.SESSION.NOT_REGISTERED_ERROR);
         });
     }

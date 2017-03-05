@@ -13,6 +13,12 @@
 @import 'pages/account/account-menu';
 @import 'components/add-image/add-image';
 
+@each $color in $colors {
+  [background-color="#{nth($color, 1)}"] {
+    background-color: #{nth($color, 2)};
+  }
+}
+
 // Remove top border of all lists
 ion-list.list > .item.item-block:first-child,
 ion-list.list > ion-item-sliding:first-child .item.item-block {
@@ -37,4 +43,8 @@ ion-label[floating] {
 .item > ion-icon:first-child,
 .item-inner > ion-icon:first-child {
   min-width: 28px; // 24px; override ionic style
+}
+
+img {
+  object-fit: cover;
 }

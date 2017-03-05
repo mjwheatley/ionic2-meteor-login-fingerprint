@@ -1,5 +1,5 @@
 import {Component, NgZone} from '@angular/core';
-import {IONIC_DIRECTIVES, NavController, Alert} from 'ionic-angular';
+import {NavController, Alert} from 'ionic-angular';
 import {FormBuilder, Validators, AbstractControl, FormGroup} from '@angular/forms';
 import {MeteorComponent} from 'angular2-meteor';
 import {Constants} from "../../../../../../../both/Constants";
@@ -40,7 +40,7 @@ export class ForgotPasswordCardComponent extends MeteorComponent {
         };
 
         this.autorun(() => {
-            this.email = Session.get(Constants.SESSION.EMAIL);
+            this.email = Session.get(Constants.SESSION.EMAIL) || null;
         });
     }
 

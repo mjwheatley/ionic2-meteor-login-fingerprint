@@ -9,11 +9,12 @@
                       *ngIf="user">
                 <ion-avatar item-left>
                     <img src="{{user.profile.picture}}" *ngIf="user.profile.picture">
-                    <button ion-button icon-only round clear color="light"
-                            class="disable-hover no-user-image-icon"
-                            *ngIf="!user.profile.picture">
-                        <ion-icon name="contact" *ngIf="!user.profile.picture"></ion-icon>
-                    </button>
+                    <div *ngIf="!user.profile.picture">
+                        <button ion-button icon-only round clear color="light"
+                                class="disable-hover no-user-image-icon">
+                            <ion-icon name="contact"></ion-icon>
+                        </button>
+                    </div>
                 </ion-avatar>
                 <h2>{{user.profile.name.display}}</h2>
                 <p class="user-item-email">{{user.emails['0'].address}}</p>
