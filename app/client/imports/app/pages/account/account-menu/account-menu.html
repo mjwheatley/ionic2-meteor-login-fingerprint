@@ -5,7 +5,7 @@
     <ion-toolbar color="navbar">
         <ion-list no-lines class="list-user" *ngIf="user">
             <ion-item detail-none text-wrap
-                      class="item-primary"
+                      class="toolbar-item"
                       *ngIf="user">
                 <ion-avatar item-left>
                     <img src="{{user.profile.picture}}" *ngIf="user.profile.picture">
@@ -17,7 +17,9 @@
                     </div>
                 </ion-avatar>
                 <h2>{{user.profile.name.display}}</h2>
-                <p class="user-item-email">{{user.emails['0'].address}}</p>
+                <p class="user-item-email" *ngIf="user.emails">
+                    {{user.emails['0'].address}}
+                </p>
             </ion-item>
         </ion-list>
     </ion-toolbar>
