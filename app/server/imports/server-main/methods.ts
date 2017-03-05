@@ -9,12 +9,23 @@ export class MeteorMethods {
     private readonly bcryptSaltRounds = 13;
 
     public init():void {
+        var self = this;
         Meteor.methods({
+            'sample': () => {
+                var user:Meteor.User = MeteorMethods.checkForUser();  // throws errors
+                if (user) {
+                    var future:any = new Future();
+                    try {
+                        return future.wait();
+                    } catch (error) {
+                        throw error;
+                    }
+                }
+            },
             '/auth/fingerprint/android/credentials/secret': (data:{
                 deviceId:string
             }) => {
-                var self = this;
-                var user:Meteor.User = self.checkForUser();  // throws errors
+                var user:Meteor.User = MeteorMethods.checkForUser();  // throws errors
                 if (user) {
                     var future = new Future();
                     var secret = bcrypt.hashSync(user._id + data.deviceId, self.bcryptSaltRounds);
@@ -44,7 +55,6 @@ export class MeteorMethods {
                 email:string,
                 secret:string
             }) => {
-                var self = this;
                 var user:Meteor.User = Accounts.findUserByEmail(data.email);
                 if (!user) {
                     throw new Meteor.Error("account-not-found", "Email not found.");
@@ -72,8 +82,7 @@ export class MeteorMethods {
                 deviceId:string,
                 token:string
             }) => {
-                var self = this;
-                var user:Meteor.User = self.checkForUser();  // throws errors
+                var user:Meteor.User = MeteorMethods.checkForUser();  // throws errors
                 if (user) {
                     var future = new Future();
                     Meteor.users.update(user._id, {
@@ -101,7 +110,6 @@ export class MeteorMethods {
                 email:string,
                 deviceId:string
             }) => {
-                var self = this;
                 var user:Meteor.User = Accounts.findUserByEmail(data.email);
                 if (!user) {
                     throw new Meteor.Error("account-not-found", "Email not found.");
@@ -117,8 +125,7 @@ export class MeteorMethods {
                 }
             },
             '/auth/fingerprint/disable': () => {
-                var self = this;
-                var user:Meteor.User = self.checkForUser();  // throws errors
+                var user:Meteor.User = MeteorMethods.checkForUser();  // throws errors
                 if (user) {
                     var future = new Future();
 
@@ -145,15 +152,15 @@ export class MeteorMethods {
         });
     }
 
-    private checkForUser():Meteor.User {
+    public static checkForUser():Meteor.User {
         var currentUserId = Meteor.userId();
         var user:Meteor.User;
         if (!currentUserId) {
-            throw new Meteor.Error("sign-in", "Please sign in.");
+            throw new Meteor.Error(Constants.METEOR_ERRORS.SIGN_IN, "Please sign in.");
         } else {
             user = Meteor.users.findOne(currentUserId);
             if (!user) {
-                throw new Meteor.Error("account-not-found", "Invalid User ID");
+                throw new Meteor.Error(Constants.METEOR_ERRORS.ACCOUNT_NOT_FOUND, "Invalid User ID");
             }
         }
         return user;

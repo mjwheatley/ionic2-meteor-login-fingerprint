@@ -32,6 +32,8 @@ export class Constants {
     };
 
     public static METEOR_ERRORS:any = {
+        SIGN_IN: "sign-in",
+        ACCOUNT_NOT_FOUND: "account-not-found",
         NO_PASSWORD: "User has no password set",
         USER_NOT_FOUND: "User not found",
         INCORRECT_PASSWORD: "Incorrect password",
