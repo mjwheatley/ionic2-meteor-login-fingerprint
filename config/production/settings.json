@@ -4,13 +4,17 @@
   },
   "private": {
     "environment": "PRODUCTION",
-    "google": {
-      "clientId": "",
-      "secret": ""
-    },
-    "facebook": {
-      "appId": "",
-      "secret": ""
+    "oauth2": {
+      "providers": {
+        "google": {
+          "clientId": "",
+          "secret": ""
+        },
+        "facebook": {
+          "appId": "",
+          "secret": ""
+        }
+      }
     }
   },
   "sample": "config/production/settings.json"
