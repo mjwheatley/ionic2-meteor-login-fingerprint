@@ -3,7 +3,7 @@ import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from '@angular/http';
-import {TranslateModule} from 'ng2-translate';
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 import {Constants} from "../../../both/Constants";
 import {AppComponent} from "./app.component";
 import {HomePage} from "./pages/home/home";
@@ -13,7 +13,7 @@ import {WelcomeHeaderComponent} from "./components/welcome-header/welcome-header
 import {LanguageSelectComponent} from "./components/language-select/language-select";
 
 @NgModule({
-    // Components, Pipes, Directive
+    // Components/Pages, Pipes, Directive
     declarations: [
         AppComponent,
         HomePage,
@@ -21,7 +21,7 @@ import {LanguageSelectComponent} from "./components/language-select/language-sel
         WelcomeHeaderComponent,
         LanguageSelectComponent
     ],
-    // Entry Components
+    // Pages
     entryComponents: [
         AppComponent,
         HomePage
