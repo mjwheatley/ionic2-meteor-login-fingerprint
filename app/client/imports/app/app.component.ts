@@ -35,7 +35,7 @@ export class AppComponent extends MeteorComponent implements OnInit {
         super();
     }
 
-    ngOnInit():void {
+    ngOnInit() {
         this.initializeApp();
         // set the nav menu title to the application name from settings.json
         this.appName = Meteor.settings.public["appName"];
@@ -113,7 +113,7 @@ export class AppComponent extends MeteorComponent implements OnInit {
         });
     }
 
-    private initializeApp() {
+    private initializeApp():void {
         this.platform.ready().then(() => {
             // The platform is now ready. Note: if this callback fails to fire, follow
             // the Troubleshooting guide for a number of possible solutions:

@@ -38,3 +38,7 @@ ion-label[floating] {
 .item-inner > ion-icon:first-child {
   min-width: 28px; // 24px; override ionic style
 }
+
+img {
+  object-fit: cover;
+}

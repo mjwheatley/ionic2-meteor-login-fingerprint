@@ -70,7 +70,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         this.autorun(() => this.zone.run(() => {
             Session.get(Constants.SESSION.REGISTERED_ERROR);
             Session.get(Constants.SESSION.INCORRECT_PASSWORD);
-            this.loginInputs.email = Session.get(Constants.SESSION.EMAIL);
+            this.loginInputs.email = Session.get(Constants.SESSION.EMAIL) || null;
         }));
     }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit, NgZone} from '@angular/core';
-import {IONIC_DIRECTIVES, NavController, Alert} from 'ionic-angular';
+import {NavController, Alert} from 'ionic-angular';
 import {FormBuilder, Validators, AbstractControl, FormGroup} from '@angular/forms';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
