@@ -13,7 +13,7 @@
     "build:md-css": "node-sass --include-path node_modules/ionic-angular/themes --include-path node_modules/ionicons/dist/scss ../theme/app.md.scss | postcss --local-plugins --use autoprefixer --output public/stylesheets/md-bundle.css",
     "build:fonts": "copyfiles -f 'node_modules/ionic-angular/fonts/*.+(ttf||woff||woff2)' public/fonts/",
     "watch:css": "nodemon -w ../theme -e scss -x npm run build:ios-css build:md-css",
-    "build": "npm-run-all build:* --parallel meteor:build",
+    "build": "npm-run-all build:* --parallel",
     "test": "meteor test --driver-package practicalmeteor:mocha",
     "test:ci": "meteor test --once --driver-package dispatch:mocha-phantomjs",
     "meteor:build": "meteor build --directory ../build/ --architecture os.linux.x86_64"
@@ -46,19 +46,20 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
     "@angular/router": "3.3.0",
-    "@ionic/storage": "1.1.6",
+    "@ionic/storage": "1.1.7",
     "angular2-meteor": "0.7.1",
     "angular2-meteor-polyfills": "0.1.1",
     "angular2-meteor-tests-polyfills": "0.0.2",
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.1",
-    "ionic-angular": "2.0.0-rc.4",
-    "ionic-native": "2.2.11",
+    "ionic-angular": "2.1.0",
+    "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
     "meteor-rxjs": "0.4.5",
     "ng2-translate": "^4.2.0",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-rc.4",
+    "sw-toolbox": "3.4.0",
     "zone.js": "0.7.2"
   }
 }

@@ -41,24 +41,28 @@ export class LanguageSelectComponent extends MeteorComponent {
         var self = this;
         let alert = self.alertCtrl.create({
             title: self.translate.instant("language-select.header"),
-            inputs: [
-                {type: 'radio', label: 'English', value: 'en', checked: (self.langCode === "en")},
-                {type: 'radio', label: 'Español', value: 'es', checked: (self.langCode === "es")}
-            ],
-            buttons: [
-                {
-                    text: self.translate.instant("general.cancel")
-                },
-                {
-                    text: self.translate.instant("general.ok"),
-                    handler: data => {
-                        Session.set(Constants.SESSION.TRANSLATIONS_READY, false);
-                        Session.set(Constants.SESSION.LANGUAGE, data);
-                        self.translate.use(data);
-                        self.setLanguage();
-                    }
+            inputs: [{
+                type: 'radio',
+                label: 'English',
+                value: 'en',
+                checked: (self.langCode === "en")
+            }, {
+                type: 'radio',
+                label: 'Español',
+                value: 'es',
+                checked: (self.langCode === "es")
+            }],
+            buttons: [{
+                text: self.translate.instant("general.cancel")
+            }, {
+                text: self.translate.instant("general.ok"),
+                handler: data => {
+                    Session.set(Constants.SESSION.TRANSLATIONS_READY, false);
+                    Session.set(Constants.SESSION.LANGUAGE, data);
+                    self.translate.use(data);
+                    self.setLanguage();
                 }
-            ]
+            }]
         });
         alert.present();
     }

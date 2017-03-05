@@ -1,8 +1,8 @@
 
 #Framework Versions
-###Meteor 1.4.2.3
-###Ionic2 rc4
-###Angular 2.2.1
+###Meteor v1.4.3.1
+###Ionic2 v2.1.0
+###Angular2 v2.2.1
 
 #Screenshots
 ###Android
@@ -83,10 +83,17 @@ This boilerplate comes with support for Internationalization using the ng2-trans
     *  Add new languages to the alert dialog inputs:
 
 ```
-inputs: [
-                {type: 'radio', label: 'English', value: 'en', checked: (this.langCode === "en")},
-                {type: 'radio', label: 'Español', value: 'es', checked: (this.langCode === "es")}
-            ],
+inputs: [{
+    type: 'radio',
+    label: 'English',
+    value: 'en',
+    checked: (self.langCode === "en")
+}, {
+    type: 'radio',
+    label: 'Español',
+    value: 'es',
+    checked: (self.langCode === "es")
+}]
 ```
 
 #Creating new pages/components

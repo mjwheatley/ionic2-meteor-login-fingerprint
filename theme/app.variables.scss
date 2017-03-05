@@ -18,14 +18,23 @@
 // Both iOS and MD colors can be further customized if colors
 // are different per mode.
 
+$color-primary: #ad48e7;
+
 $colors: (
-        primary: #ad48e7,
+        primary: $color-primary,
         secondary: #32db64,
         danger: #f53d3d,
         light: #f4f4f4,
         dark: #222,
         favorite: #69BB7B,
-        white: white
+        white: white,
+        navbar: $color-primary
 );
 
 $background-color: #c0c0c0;
+
+@each $color in $colors {
+  [background-color="#{nth($color, 1)}"] {
+    background-color: #{nth($color, 2)};
+  }
+}
