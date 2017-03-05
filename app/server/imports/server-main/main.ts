@@ -1,6 +1,6 @@
 import {DemoCollection} from "../../../both/collections/demo.collection";
 import {Demo} from "../../../both/models/demo.model";
-import {OauthServiceConfig} from "../../lib/oauthConfig";
+import {OauthServiceConfig} from "../../lib/oauth-service-config";
 import {MeteorMethods} from "./methods";
 
 declare var process;
