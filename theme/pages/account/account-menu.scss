@@ -1,5 +1,5 @@
-.item-primary {
-  background-color: color($colors, primary);
+.toolbar-item {
+  background-color: color($colors, navbar);
   color: white;
   p {
     color: white;
@@ -11,7 +11,7 @@
   font-size: 1.15rem;
 }
 
-.item-primary .item-inner {
+.toolbar-item .item-inner {
   border-bottom: none;
 }
 
