@@ -21,7 +21,7 @@ export class HomePage extends MeteorComponent implements OnInit {
 
     ngOnInit() {
         // Use MeteorComponent autorun to respond to reactive session variables.
-        this.autorun(() => {
+        this.autorun(() => this.zone.run(() => {
             this.user = Meteor.user();
 
             // Wait for translations to be ready
