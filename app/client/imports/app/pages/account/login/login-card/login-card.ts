@@ -19,7 +19,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         email:AbstractControl,
         password:AbstractControl
     };
-    public loginInputs: {
+    public loginInputs:{
         email:string,
         password:string
     };
@@ -68,12 +68,13 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
 
     public onSubmit():void {
         var self = this;
-        if (this.loginForm.valid) {
-            Session.set(Constants.SESSION.EMAIL, this.loginInputs.email);
+        if (self.loginForm.valid) {
+            Session.set(Constants.SESSION.EMAIL, self.loginInputs.email);
             Session.set(Constants.SESSION.LOADING, true);
-            Meteor.loginWithPassword(
-                {email: this.loginInputs.email.toLowerCase()},
-                this.loginInputs.password,
+            Meteor.loginWithPassword({
+                    email: self.loginInputs.email.toLowerCase()
+                },
+                self.loginInputs.password,
                 (error) => {
                     Session.set(Constants.SESSION.LOADING, false);
                     if (error) {
