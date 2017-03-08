@@ -124,6 +124,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         var self = this;
         if (self.formControl.email.valid) {
             Session.set(Constants.SESSION.EMAIL, self.loginInputs.email);
+            Session.set(Constants.SESSION.LOADING, true);
             self.getFingerprintToken();
         }
     }
@@ -134,6 +135,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
             email: self.loginInputs.email,
             deviceId: device.uuid
         }, (error, result) => {
+            Session.set(Constants.SESSION.LOADING, false);
             if (error) {
                 console.log("Error: " + JSON.stringify(error));
                 var errorMsg = error;
@@ -186,6 +188,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                     secret = result.password;
                 }
 
+                Session.set(Constants.SESSION.LOADING, true);
                 self.verifyCredentials(secret);
             }
         });
@@ -197,6 +200,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
             email: self.loginInputs.email,
             secret: secret
         }, (error, result) => {
+            Session.set(Constants.SESSION.LOADING, true);
             if (error) {
                 console.log("Error verifying credentials: " + JSON.stringify(error));
                 var errorMsg = error;
