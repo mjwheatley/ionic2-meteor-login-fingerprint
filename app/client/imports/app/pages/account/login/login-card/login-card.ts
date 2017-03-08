@@ -67,14 +67,14 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
     }
 
     public onSubmit():void {
-        var component = this;
+        var self = this;
         if (this.loginForm.valid) {
             Session.set(Constants.SESSION.EMAIL, this.loginInputs.email);
             Session.set(Constants.SESSION.LOADING, true);
             Meteor.loginWithPassword(
                 {email: this.loginInputs.email.toLowerCase()},
                 this.loginInputs.password,
-                function (error) {
+                (error) => {
                     Session.set(Constants.SESSION.LOADING, false);
                     if (error) {
                         console.log("loginWithPassword Error: " + JSON.stringify(error));
@@ -83,13 +83,13 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                             if (error.reason === Constants.METEOR_ERRORS.INCORRECT_PASSWORD) {
                                 console.log("Incorrect password");
                                 Session.set(Constants.SESSION.INCORRECT_PASSWORD, true);
-                                component.formControl.password.updateValueAndValidity(true);
+                                self.formControl.password.updateValueAndValidity(true);
                             } else if (error.reason === Constants.METEOR_ERRORS.USER_NOT_FOUND) {
                                 console.log("User not found");
                                 Session.set(Constants.SESSION.REGISTERED_ERROR, true);
-                                component.formControl.email.updateValueAndValidity(true);
+                                self.formControl.email.updateValueAndValidity(true);
                             } else if (error.reason === Constants.METEOR_ERRORS.NO_PASSWORD) {
-                                toastMessage = component.translate.instant("login-card.errors.socialSignIn");
+                                toastMessage = self.translate.instant("login-card.errors.socialSignIn");
                             } else {
                                 toastMessage = error.reason;
                             }
@@ -100,12 +100,11 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                             new ToastMessenger().toast({
                                 type: "error",
                                 message: toastMessage,
-                                title: component.translate.instant("login-card.errors.signIn")
+                                title: self.translate.instant("login-card.errors.signIn")
                             });
                         }
                     } else {
                         console.log("Successfully logged in with password.");
-                        //component.nav.rootNav.setRoot(HomePage);
                     }
                 }
             );
