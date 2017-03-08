@@ -70,10 +70,12 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
         var component = this;
         if (this.loginForm.valid) {
             Session.set(Constants.SESSION.EMAIL, this.loginInputs.email);
+            Session.set(Constants.SESSION.LOADING, true);
             Meteor.loginWithPassword(
                 {email: this.loginInputs.email.toLowerCase()},
                 this.loginInputs.password,
                 function (error) {
+                    Session.set(Constants.SESSION.LOADING, false);
                     if (error) {
                         console.log("loginWithPassword Error: " + JSON.stringify(error));
                         var toastMessage = null;
