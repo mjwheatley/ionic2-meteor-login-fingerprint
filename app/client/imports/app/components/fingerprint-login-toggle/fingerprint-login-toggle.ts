@@ -7,6 +7,7 @@ import {ToastMessenger} from "../../utils/ToastMessenger";
 import {FingerprintHelper} from "../../utils/FingerprintHelper";
 
 declare var device;
+declare var FingerprintAuth; // cordova-plugin-android-fingerprint-auth
 
 import template from './fingerprint-login-toggle.html';
 @Component({
@@ -175,12 +176,12 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                 secret: secret
             }, (error, result) => {
                 if (error) {
-                    console.log("authentication error: " + JSON.stringify(error));
+                    console.log("authentication error: " + error);
                     self.isFingerprintEnabled = false;
-                    if (error !== "Cancelled") {
+                    if (error !== FingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
                         let alert = self.alertCtrl.create({
                             title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
-                            message: error.reason,
+                            message: error,
                             buttons: [self.translate.instant("general.ok")]
                         });
                         alert.present();
