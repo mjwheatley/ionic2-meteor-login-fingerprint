@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
@@ -25,6 +25,7 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
 
     constructor(public nav:NavController,
                 public alertCtrl:AlertController,
+                public zone:NgZone,
                 public translate:TranslateService) {
         super();
     }
@@ -81,7 +82,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
             buttons: [{
                 text: self.translate.instant("general.cancel"),
                 handler: data => {
-                    self.isFingerprintEnabled = false;
+                    self.zone.run(() => {
+                        self.isFingerprintEnabled = false;
+                    });
                 }
             }, {
                 text: self.translate.instant("general.ok"),
@@ -105,8 +108,11 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
         self.fingerprintHelper.isFingerprintAvailable((error, result) => {
             var errorMsg = Constants.EMPTY_STRING;
             if (error) {
-                console.log("error: " + JSON.stringify(error));
-                self.isFingerprintEnabled = false;
+                console.log("error: " + error);
+                self.zone.run(() => {
+                    self.isFingerprintEnabled = false;
+                });
+
                 errorMsg = error;
                 let alert = self.alertCtrl.create({
                     title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
@@ -118,7 +124,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                 console.log("isFingerprintAvailable() result: " + JSON.stringify(result));
 
                 if (!result.isAvailable) {
-                    self.isFingerprintEnabled = false;
+                    self.zone.run(() => {
+                        self.isFingerprintEnabled = false;
+                    });
                     if (!result.isHardwareDetected) {
                         errorMsg = self.translate.instant("fingerprint-helper.errors.hardwareRequired");
                     } else if (!result.hasEnrolledFingerprints) {
@@ -147,7 +155,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                 Session.set(Constants.SESSION.LOADING, false);
                 if (error) {
                     console.log("error: " + JSON.stringify(error));
-                    self.isFingerprintEnabled = false;
+                    self.zone.run(() => {
+                        self.isFingerprintEnabled = false;
+                    });
                     let alert = self.alertCtrl.create({
                         title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
                         message: error.reason,
@@ -176,8 +186,10 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                 secret: secret
             }, (error, result) => {
                 if (error) {
-                    console.log("authentication error: " + error);
-                    self.isFingerprintEnabled = false;
+                    console.log("authentication error: " + JSON.stringify(error));
+                    self.zone.run(() => {
+                        self.isFingerprintEnabled = false;
+                    });
                     if (error !== FingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
                         let alert = self.alertCtrl.create({
                             title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
@@ -190,7 +202,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                     console.log("authentication result: " + JSON.stringify(result));
                     if (device.platform === Constants.DEVICE.ANDROID) {
                         if (!result.withFingerprint && !result.token) {
-                            self.isFingerprintEnabled = false;
+                            self.zone.run(() => {
+                                self.isFingerprintEnabled = false;
+                            });
                             let alert = self.alertCtrl.create({
                                 title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
                                 message: self.translate.instant("fingerprint-helper.enableAuthentication.failure"),
@@ -218,7 +232,9 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
             Session.set(Constants.SESSION.LOADING, false);
             if (error) {
                 console.log("saveEncryptedToken() Error: " + JSON.stringify(error));
-                self.isFingerprintEnabled = false;
+                self.zone.run(() => {
+                    self.isFingerprintEnabled = false;
+                });
             } else {
                 console.log("saveEncryptedToken() result: " + JSON.stringify(result));
                 new ToastMessenger().toast({
