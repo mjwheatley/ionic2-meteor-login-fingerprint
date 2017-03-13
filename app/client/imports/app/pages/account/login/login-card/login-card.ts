@@ -163,10 +163,16 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
 
     private doFingerprintAuthentication(secret:string):void {
         var self = this;
-        self.fingerprintHelper.authenticate({
+        var options:any = {
             secret: secret,
             mode: Constants.CIPHER_MODE.DECRYPT
-        }, (error, result) => {
+        };
+        if (device.platform === Constants.DEVICE.IOS) {
+            options.ios = {
+                message: self.translate.instant("fingerprint-helper.touchId.scanFingerprint")
+            };
+        }
+        self.fingerprintHelper.authenticate(options, (error, result) => {
             if (error) {
                 console.log("error: " + JSON.stringify(error));
                 let alert = self.alertCtrl.create({

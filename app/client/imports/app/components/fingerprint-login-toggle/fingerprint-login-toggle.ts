@@ -180,11 +180,10 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
                 secret: secret
             };
             if (device.platform === Constants.DEVICE.IOS) {
-                options.message = self.translate.instant("fingerprint-helper.touchId.scanFingerprint");
-            }
-            self.fingerprintHelper.authenticate({
-                secret: secret
-            }, (error, result) => {
+                options.ios = {
+                    message: self.translate.instant("fingerprint-helper.touchId.scanFingerprint")
+            };
+            self.fingerprintHelper.authenticate(options, (error, result) => {
                 if (error) {
                     console.log("authentication error: " + JSON.stringify(error));
                     self.zone.run(() => {
