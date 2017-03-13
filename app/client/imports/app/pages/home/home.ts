@@ -36,6 +36,6 @@ export class HomePage extends MeteorComponent implements OnInit {
                     this.app.setTitle(translation);
                 });
             }
-        });
+        }));
     }
 }
