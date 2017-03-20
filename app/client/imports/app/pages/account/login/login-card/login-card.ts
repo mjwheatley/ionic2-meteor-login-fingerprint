@@ -156,7 +156,44 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                 });
                 alert.present();
             } else {
-                self.doFingerprintAuthentication(result.token);
+                self.isFingerprintAuthAvailable(result.token);
+            }
+        });
+    }
+
+    private isFingerprintAuthAvailable(secret:string):void {
+        var self = this;
+
+        self.fingerprintHelper.isFingerprintAvailable((error, result) => {
+            var errorMsg = Constants.EMPTY_STRING;
+            if (error) {
+                console.log("error: " + error);
+
+                errorMsg = error;
+                let alert = self.alertCtrl.create({
+                    title: self.translate.instant("fingerprint-helper.errors.authenticationError"),
+                    message: errorMsg,
+                    buttons: [self.translate.instant("general.ok")]
+                });
+                alert.present();
+            } else {
+                console.log("isFingerprintAvailable() result: " + JSON.stringify(result));
+
+                if (!result.isAvailable) {
+                    if (!result.isHardwareDetected) {
+                        errorMsg = self.translate.instant("fingerprint-helper.errors.hardwareRequired");
+                    } else if (!result.hasEnrolledFingerprints) {
+                        errorMsg = self.translate.instant("fingerprint-helper.errors.noFingerprints");
+                    }
+                    let alert = self.alertCtrl.create({
+                        title: self.translate.instant("fingerprint-helper.errors.notAvailable"),
+                        message: errorMsg,
+                        buttons: [self.translate.instant("general.ok")]
+                    });
+                    alert.present();
+                }
+
+                self.doFingerprintAuthentication(secret);
             }
         });
     }
@@ -180,6 +217,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
                     message: error,
                     buttons: [self.translate.instant("general.ok")]
                 });
+                alert.present();
             } else {
                 console.log("result: " + JSON.stringify(result));
                 if (device.platform === Constants.DEVICE.ANDROID) {
@@ -206,7 +244,7 @@ export class LoginCardComponent extends MeteorComponent implements OnInit {
             email: self.loginInputs.email,
             secret: secret
         }, (error, result) => {
-            Session.set(Constants.SESSION.LOADING, true);
+            Session.set(Constants.SESSION.LOADING, false);
             if (error) {
                 console.log("Error verifying credentials: " + JSON.stringify(error));
                 var errorMsg = error;

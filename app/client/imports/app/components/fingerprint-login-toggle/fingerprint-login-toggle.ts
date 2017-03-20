@@ -182,7 +182,8 @@ export class FingerprintLoginToggleComponent extends MeteorComponent implements 
             if (device.platform === Constants.DEVICE.IOS) {
                 options.ios = {
                     message: self.translate.instant("fingerprint-helper.touchId.scanFingerprint")
-            };
+                };
+            }
             self.fingerprintHelper.authenticate(options, (error, result) => {
                 if (error) {
                     console.log("authentication error: " + JSON.stringify(error));
