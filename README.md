@@ -1,6 +1,6 @@
 
 #Framework Versions
-###Meteor v1.4.3.1
+###Meteor v1.4.3.2
 ###Ionic2 v2.1.0
 ###Angular2 v2.2.1
 
