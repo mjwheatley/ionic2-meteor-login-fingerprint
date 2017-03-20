@@ -43,11 +43,13 @@ export class ImageHandler {
             MeteorCamera.getPicture(cameraOptions, function (error, data) {
                 if (error) {
                     console.log("MeteorCamera.getPicture() Error: " + JSON.stringify(error));
-                    new ToastMessenger().toast({
-                        type: "error",
-                        message: error.message,
-                        title: self.translate.instant("image-handler.errors.camera")
-                    });
+                    if (error.error !== "cancel") {
+                        new ToastMessenger().toast({
+                            type: "error",
+                            message: error.message,
+                            title: self.translate.instant("image-handler.errors.camera")
+                        });
+                    }
                 } else {
                     self.cameraSuccess(data);
                 }
