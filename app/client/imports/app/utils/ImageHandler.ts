@@ -46,7 +46,7 @@ export class ImageHandler {
                     if (error.error !== "cancel") {
                         new ToastMessenger().toast({
                             type: "error",
-                            message: error.message,
+                            message: error.reason,
                             title: self.translate.instant("image-handler.errors.camera")
                         });
                     }
