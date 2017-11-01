@@ -1,4 +1,4 @@
-import {TranslateService} from 'ng2-translate';
+import {TranslateService} from "ng2-translate";
 import {ToastMessenger} from "./ToastMessenger";
 import {Constants} from "../../../../both/Constants";
 import {FileUtil} from "../../../../both/FileUtil";
@@ -11,6 +11,8 @@ declare var Camera;
 declare var navigator;
 
 export class ImageHandler {
+    private MAX_FILE_SIZE:number = 102400;
+
     constructor(private translate:TranslateService) {
     }
 
@@ -25,7 +27,7 @@ export class ImageHandler {
                 destinationType: Camera.DestinationType.DATA_URL,
                 // targetWidth: window.screen.width * window.devicePixelRatio,
                 // targetHeight: window.screen.height * window.devicePixelRatio,
-                
+
                 // Reduced quality and dimensions to keep image under 100Kbs
                 targetWidth: 400,
                 targetHeight: 400,
@@ -43,7 +45,7 @@ export class ImageHandler {
             MeteorCamera.getPicture(cameraOptions, function (error, data) {
                 if (error) {
                     console.log("MeteorCamera.getPicture() Error: " + JSON.stringify(error));
-                    if (error.error !== "cancel") {
+                    if (error.error != "cancel") {
                         new ToastMessenger().toast({
                             type: "error",
                             message: error.reason,
@@ -109,13 +111,16 @@ export class ImageHandler {
         var img = new Image();
         img.onload = function () {
             console.log("file size: " + data.file.size);
-            if (data.file.size > 102400) {
+            if (data.file.size > self.MAX_FILE_SIZE) {
+                console.log("img.width: ", img.width);
+                console.log("img.height: ", img.height);
                 console.log("File size too large (max 100KB).");
-                new ToastMessenger().toast({
-                    type: "error",
-                    message: self.translate.instant("image-handler.errors.resizeImage"),
-                    title: self.translate.instant("image-handler.errors.tooBig")
-                });
+                // new ToastMessenger().toast({
+                //     type: "error",
+                //     message: self.translate.instant("image-handler.errors.resizeImage"),
+                //     title: self.translate.instant("image-handler.errors.tooBig")
+                // });
+                self.reduceImageQuality(img);
             } else {
                 Session.set(Constants.SESSION.imageUri, data.dataUri);
             }
@@ -128,5 +133,42 @@ export class ImageHandler {
             });
         };
         img.src = data.dataUri;
+    }
+
+    public resizeImage(image):void {
+        console.log("resizing image...");
+        var self = this;
+        var canvas = document.createElement('canvas');
+        var canvasContext = canvas.getContext('2d');
+
+        canvas.width = image.width * 0.75;
+        canvas.height = image.height * 0.75;
+        canvasContext.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        var dataUri = canvas.toDataURL('image/jpeg', 0.5);
+        self.cameraSuccess(dataUri);
+    }
+
+    public reduceImageQuality(image):void {
+        console.log("reduce image quality");
+        var self = this;
+        var canvas = document.createElement('canvas');
+        var canvasContext = canvas.getContext('2d');
+
+        canvas.width = image.width * 0.75;
+        canvas.height = image.height * 0.75;
+        canvasContext.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        var dataUri = canvas.toDataURL('image/jpeg', 0.5);
+
+        //Check file size
+        var file:File = FileUtil.dataUriToFile(dataUri, "tmpImg.jpg");
+        console.log("file size: " + file.size);
+        if (file.size > self.MAX_FILE_SIZE) {
+            console.log("Image file still too big.");
+            self.resizeImage(image);
+        } else {
+            self.cameraSuccess(dataUri);
+        }
     }
 }
