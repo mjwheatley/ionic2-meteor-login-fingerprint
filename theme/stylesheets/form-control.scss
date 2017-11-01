@@ -50,6 +50,13 @@ ion-icon[item-left] + .item-inner {
   font-style: italic;
 }
 
+.input-help-box {
+  margin-top: 5px;
+  font-size: 14px;
+  color: color($colors, primary);
+  font-style: italic;
+}
+
 .icon-error-box {
   margin-left: 60px;
   margin-top: 5px;
