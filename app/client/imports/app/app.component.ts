@@ -82,10 +82,10 @@ export class AppComponent extends MeteorComponent implements OnInit {
                 if (this.nav) {
                     // Delay to prevent showing if loaded quickly
                     Meteor.setTimeout(() => {
-                        if (!this.laoding && Session.get(Constants.SESSION.LOADING)) {
+                        if (!this.loading && Session.get(Constants.SESSION.LOADING)) {
                             this.loading = this.loadingCtrl.create({
                                 spinner: 'crescent'
-                                //content: 'Loggin in...'
+                                //content: 'Loading...'
                             });
                             this.loading.present();
                             this.isLoading = true;
@@ -93,7 +93,7 @@ export class AppComponent extends MeteorComponent implements OnInit {
                     }, 500);
                 }
             } else {
-                if (this.isLoading) {
+                if (this.isLoading && this.loading) {
                     this.loading.dismiss();
                     this.loading = null;
                 }
