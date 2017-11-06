@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/chai": "3.4.33",
-    "@types/meteor": "^1.3.31",
+    "@types/meteor": "1.4.12",
     "@types/mocha": "2.2.34",
     "@types/underscore": "^1.7.36",
     "autoprefixer": "6.3.5",
@@ -33,7 +33,7 @@
     "node-sass": "3.4.2",
     "npm-run-all": "1.7.0",
     "postcss-cli": "2.5.1",
-    "typescript": "2.0.9"
+    "typescript": "2.2.1"
   },
   "dependencies": {
     "@angular/common": "2.2.1",

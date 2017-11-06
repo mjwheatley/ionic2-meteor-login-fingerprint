@@ -12,6 +12,11 @@
     "sourceMap": true,
     "inlineSources": true
   },
+  "include": [
+    "both/**/*.ts",
+    "client/**/*.ts",
+    "server/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ],
