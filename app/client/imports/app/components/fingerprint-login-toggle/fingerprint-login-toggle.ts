@@ -9,10 +9,9 @@ import {FingerprintHelper} from "../../utils/FingerprintHelper";
 declare var device;
 declare var FingerprintAuth; // cordova-plugin-android-fingerprint-auth
 
-import template from './fingerprint-login-toggle.html';
 @Component({
-    selector: 'fingerprint-login-toggle',
-    template
+    selector: "fingerprint-login-toggle",
+    templateUrl: "fingerprint-login-toggle.html"
 })
 export class FingerprintLoginToggleComponent extends MeteorComponent implements OnInit {
     public user:Meteor.User;
