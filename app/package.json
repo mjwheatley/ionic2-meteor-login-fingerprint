@@ -13,7 +13,8 @@
     "prep:md-css": "node-sass --include-path node_modules/ionic-angular/themes --include-path node_modules/ionicons/dist/scss ../theme/app.md.scss | postcss --local-plugins --use autoprefixer --output public/stylesheets/md-bundle.css",
     "prep:fonts": "copyfiles -f 'node_modules/ionic-angular/fonts/*.+(ttf||woff||woff2)' public/fonts/",
     "watch:css": "nodemon -w ../theme -e scss -x npm run prep:ios-css prep:md-css",
-    "prep": "mkdir -p public/stylesheets/ public/fonts/ && npm-run-all prep:* --parallel",    "test": "meteor test --driver-package practicalmeteor:mocha",
+    "prep": "mkdir -p public/stylesheets/ public/fonts/ && npm-run-all prep:* --parallel",
+    "test": "meteor test --driver-package practicalmeteor:mocha",
     "test:ci": "meteor test --once --driver-package dispatch:mocha-phantomjs",
     "meteor:build": "meteor build --directory ../build/ --architecture os.linux.x86_64"
   },
