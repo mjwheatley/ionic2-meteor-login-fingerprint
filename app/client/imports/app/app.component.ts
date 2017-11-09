@@ -1,15 +1,15 @@
 import {Component, OnInit, NgZone, ViewChild} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {Platform, LoadingController, Loading} from 'ionic-angular';
-import {StatusBar, Splashscreen} from 'ionic-native';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
 import {Constants} from "../../../both/Constants";
 import {HomePage} from "./pages/home/home";
 import {TranslateService} from "ng2-translate";
 
-import template from './app.component.html';
 @Component({
     selector: "ion-app",
-    template
+    templateUrl: "app.component.html"
 })
 export class AppComponent extends MeteorComponent implements OnInit {
     @ViewChild('leftMenu') leftMenu:any;
@@ -28,7 +28,9 @@ export class AppComponent extends MeteorComponent implements OnInit {
     constructor(public platform:Platform,
                 public loadingCtrl:LoadingController,
                 public zone:NgZone,
-                public translate:TranslateService) {
+                public translate:TranslateService,
+                private splashscreen:SplashScreen, 
+                private statusbar:StatusBar) {
         super();
     }
 
@@ -120,17 +122,17 @@ export class AppComponent extends MeteorComponent implements OnInit {
 
                 // Style status bar
                 // StatusBar.styleDefault();
-                StatusBar.styleLightContent();
+                this.statusbar.styleLightContent();
 
                 // Set color of Android status bar background
                 // iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
                 // StatusBar.overlaysWebView(false);
 
                 //* Complimentary hex value for primary color in theme/app.variables.scss *//
-                StatusBar.backgroundColorByHexString("#672B8A");
+                this.statusbar.backgroundColorByHexString("#672B8A");
 
 
-                Splashscreen.hide();
+                this.splashscreen.hide();
             }
 
             Session.set(Constants.SESSION.PLATFORM_READY, true);
@@ -175,7 +177,7 @@ export class AppComponent extends MeteorComponent implements OnInit {
         var bodyTag:any = document.getElementsByTagName("ion-app")[0];
         var bodyClass = bodyTag.className;
         var classArray = bodyClass.split(" ");
-        var bodyStyle = classArray[0];
+        var bodyStyle = classArray[2];
         return bodyStyle;
     }
 

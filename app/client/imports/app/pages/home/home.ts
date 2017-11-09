@@ -4,10 +4,9 @@ import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 import {Constants} from "../../../../../both/Constants";
 
-import template from './home.html';
 @Component({
-    selector: 'page-home',
-    template
+    selector: "page-home",
+    templateUrl: "home.html"
 })
 export class HomePage extends MeteorComponent implements OnInit {
     public user:Meteor.User;

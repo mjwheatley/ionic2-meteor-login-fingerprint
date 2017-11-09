@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "importHelpers": true,
+    "experimentalDecorators": true,
     "lib": [
-      "es6",
-      "dom"
+      "dom",
+      "es2015"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "inlineSources": true
+    "target": "es2015",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false
   },
   "include": [
     "both/**/*.ts",
@@ -20,12 +26,8 @@
   "exclude": [
     "node_modules"
   ],
-  "files": [
-    "typings.d.ts"
-  ],
   "compileOnSave": false,
-  "angularCompilerOptions": {
-    "genDir": "aot",
-    "skipMetadataEmit": true
+  "atom": {
+    "rewriteTsconfig": false
   }
 }

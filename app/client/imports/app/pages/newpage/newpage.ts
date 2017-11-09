@@ -7,8 +7,8 @@ import {TranslateService} from 'ng2-translate';
 import template from './newpage.html';
 //TODO change selector
 @Component({
-    selector: 'page-newpage',
-    template
+    selector: "page-newpage",
+    templateUrl: "newpage.html"
 })
 //TODO change class name
 //TODO add component to declarations and entryComponents in app.module.ts
