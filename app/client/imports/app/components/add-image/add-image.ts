@@ -4,10 +4,9 @@ import {TranslateService} from 'ng2-translate';
 import {ImageHandler} from "../../utils/ImageHandler";
 import {Constants} from "../../../../../both/Constants";
 
-import template from './add-image.html';
 @Component({
-    selector: 'add-image',
-    template
+    selector: "add-image",
+    templateUrl: "add-image.html"
 })
 export class AddImageComponent {
     @ViewChild("hiddenFileInput") hiddenFileInput;

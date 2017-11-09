@@ -3,11 +3,9 @@ import {NavController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 
-
-import template from './about.html'
 @Component({
-    selector: 'page-about',
-    template
+    selector: "page-about",
+    templateUrl: "about.html"
 })
 export class AboutPage extends MeteorComponent implements OnInit {
     public user:Meteor.User;

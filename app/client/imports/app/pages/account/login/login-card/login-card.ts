@@ -8,10 +8,9 @@ import {FormValidator} from "../../../../utils/FormValidator";
 import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {TranslateService} from 'ng2-translate';
 
-import template from "./login-card.html";
 @Component({
-    selector: 'login-card',
-    template
+    selector: "login-card",
+    templateUrl: "login-card.html"
 })
 export class LoginCardComponent extends MeteorComponent implements OnInit {
     public loginForm:FormGroup;
