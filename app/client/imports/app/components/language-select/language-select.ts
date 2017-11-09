@@ -4,10 +4,9 @@ import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 import {Constants} from "../../../../../both/Constants";
 
-import template from './language-select.html';
 @Component({
-    selector: 'language-select',
-    template
+    selector: "language-select",
+    templateUrl: "language-select.html"
 })
 export class LanguageSelectComponent extends MeteorComponent {
     public language:string;
