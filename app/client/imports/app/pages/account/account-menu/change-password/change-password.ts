@@ -7,10 +7,9 @@ import {Constants} from "../../../../../../../both/Constants";
 import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {FormValidator} from "../../../../utils/FormValidator";
 
-import template from "./change-password.html";
 @Component({
     selector: "page-change-password",
-    template
+    templateUrl: "change-password.html"
 })
 export class ChangePasswordPage extends MeteorComponent implements OnInit {
     public changePasswordForm:FormGroup;

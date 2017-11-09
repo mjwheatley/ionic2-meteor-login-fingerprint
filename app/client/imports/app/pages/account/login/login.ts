@@ -3,10 +3,9 @@ import {MeteorComponent} from 'angular2-meteor';
 import {App, NavController} from 'ionic-angular';
 import {Constants} from "../../../../../../both/Constants";
 import {TranslateService} from 'ng2-translate';
-import template from "./login.html"
 @Component({
     selector: "page-login",
-    template
+    templateUrl: "login.html"
 })
 export class LoginPage extends MeteorComponent implements OnInit {
     public oauthProviders:Array<{name: string, class: string, icon: string, color: string}>;

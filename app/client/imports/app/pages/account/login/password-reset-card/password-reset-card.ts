@@ -7,10 +7,9 @@ import {Constants} from "../../../../../../../both/Constants";
 import {FormValidator} from "../../../../utils/FormValidator";
 import {HomePage} from '../../../home/home';
 
-import template from './password-reset-card.html';
 @Component({
-    selector: 'password-reset-card',
-    template
+    selector: "password-reset-card",
+    templateUrl: "password-reset-card.html"
 })
 export class PasswordResetCardComponent extends MeteorComponent implements OnInit {
     public user:Meteor.User;

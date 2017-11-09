@@ -9,16 +9,14 @@ import {INavigationMenuPage} from "../../../app.component";
 import {EditProfilePage} from './edit-profile/edit-profile';
 import {ChangePasswordPage} from './change-password/change-password';
 
-
-import template from "./account-menu.html";
 @Component({
     selector: "page-account-menu",
-    template
+    templateUrl: "account-menu.html"
 })
 export class AccountMenuPage extends MeteorComponent implements OnInit {
     public user:Meteor.User;
     public pages:Array<INavigationMenuPage>;
-    
+
     constructor(public nav:NavController,
                 public translate:TranslateService) {
         super();

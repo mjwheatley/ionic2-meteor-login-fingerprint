@@ -7,10 +7,9 @@ import {FormValidator} from "../../../../utils/FormValidator";
 import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {TranslateService} from "ng2-translate";
 
-import template from "./forgot-password-card.html";
 @Component({
-    selector: 'forgot-password-card',
-    template
+    selector: "forgot-password-card",
+    templateUrl: "forgot-password-card.html"
 })
 export class ForgotPasswordCardComponent extends MeteorComponent {
     public forgotPwForm:FormGroup;

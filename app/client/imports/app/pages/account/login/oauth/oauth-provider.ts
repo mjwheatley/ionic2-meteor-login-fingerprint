@@ -5,10 +5,9 @@ import {TranslateService} from 'ng2-translate';
 import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {Constants} from "../../../../../../../both/Constants";
 
-import template from "./oauth-provider.html";
 @Component({
-    selector: 'oauth-provider',
-    template
+    selector: "oauth-provider",
+    templateUrl: "oauth-provider.html"
 })
 export class OauthProviderComponent {
     @Input() oauthProvider;

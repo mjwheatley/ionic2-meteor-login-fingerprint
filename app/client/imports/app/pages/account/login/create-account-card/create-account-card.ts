@@ -8,10 +8,9 @@ import {FormValidator} from "../../../../utils/FormValidator";
 import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {TranslateService} from "ng2-translate";
 
-import template from "./create-account-card.html";
 @Component({
-    selector: 'create-account-card',
-    template
+    selector: "create-account-card",
+    templateUrl: "create-account-card.html"
 })
 export class CreateAccountCardComponent extends MeteorComponent implements OnInit {
     public createAccountForm:FormGroup;

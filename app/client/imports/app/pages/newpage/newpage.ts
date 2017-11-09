@@ -3,12 +3,11 @@ import {NavController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService} from 'ng2-translate';
 
-// TODO change template path
-import template from './newpage.html';
-//TODO change selector
+// TODO change selector
+// TODO change templateUrl
 @Component({
-    selector: 'page-newpage',
-    template
+    selector: "page-newpage",
+    templateUrl: "newpage.html"
 })
 //TODO change class name
 //TODO add component to declarations and entryComponents in app.module.ts

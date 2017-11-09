@@ -2,10 +2,13 @@ import {NgModule, ErrorHandler} from "@angular/core";
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule} from "@angular/forms";
 import {HttpModule} from '@angular/http';
 import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 import {Constants} from "../../../both/Constants";
 import {AppComponent} from "./app.component";
+import {SplashScreen} from "@ionic-native/splash-screen";
+import {StatusBar} from "@ionic-native/status-bar";
 import {HomePage} from "./pages/home/home";
 import {DemoComponent} from "./components/demo/demo.component";
 import {DemoDataService} from "./components/demo/demo-data.service";
@@ -66,11 +69,14 @@ import {FingerprintLoginToggleComponent} from "./components/fingerprint-login-to
         {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
-        }
+        },
+        SplashScreen,
+        StatusBar
     ],
     // Modules
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
         TranslateModule.forRoot(),
         IonicModule.forRoot(AppComponent, {
@@ -79,7 +85,7 @@ import {FingerprintLoginToggleComponent} from "./components/fingerprint-login-to
             //pageTransition: Constants.STYLE.IOS,
             //tabbarPlacement: 'top',
             swipeBackEnabled: false
-        }),
+        })
     ],
     // Main Component
     bootstrap: [IonicApp]

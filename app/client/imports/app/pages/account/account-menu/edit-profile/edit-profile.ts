@@ -7,10 +7,9 @@ import {ToastMessenger} from "../../../../utils/ToastMessenger";
 import {Constants} from "../../../../../../../both/Constants";
 // import {AddImageComponent} from '../../../../components/add-image/add-image';
 
-import template from './edit-profile.html';
 @Component({
     selector: "page-edit-profile",
-    template
+    templateUrl: "edit-profile.html"
 })
 export class EditProfilePage extends MeteorComponent implements OnInit {
     public editProfileForm:FormGroup;
